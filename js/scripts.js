@@ -10,3 +10,17 @@ document.querySelectorAll('.nav-links li').forEach(item => {
         document.querySelectorAll('.nav-links li').forEach(i => i.classList.remove('inactive'));
     });
 });
+
+// Get the navbar and the #expertise section
+const navbar = document.querySelector('.navbar');
+const expertiseSection = document.querySelector('#expertise');
+
+// Listen for scroll events
+window.addEventListener('scroll', () => {
+    // Check if we've scrolled past the #expertise section
+    if (window.scrollY >= expertiseSection.offsetTop) {
+        navbar.classList.add('fixed');
+    } else {
+        navbar.classList.remove('fixed');
+    }
+});

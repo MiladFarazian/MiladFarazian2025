@@ -1,6 +1,7 @@
 body {
     background-color: rgb(0, 34, 63);
     color: white;
+    cursor: url('../images/pointer.png') 16 16;
 }
 
 /* Logo styling */
@@ -21,9 +22,10 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 10px 20px;
+    padding: 20px 20px;
     box-sizing: border-box;
     background-color: transparent;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for transform */
 }
 
 /* Navigation links styling */
@@ -64,12 +66,17 @@ body {
     content: attr(data-index); /* Use data-index value */
     position: absolute;
     top: -15px; /* Adjust position of the number */
-    right: 0px;
+    right: 5px;
     transform: translateX(-50%);
     font-size: 12px;
-    color: gray; /* Default: gray color for numbers */
+    color: white; /* Default: gray color for numbers */
+    transition: color 0.3s ease;
     padding: 2px 5px;
     border-radius: 50%; /* Optional: make it circular */
+}
+
+.nav-links li.inactive::before {
+    color: gray;
 }
 
 /* Hover effect: The hovered number turns white */
@@ -77,14 +84,87 @@ body {
     color: white; /* The hovered number turns white */
 }
 
-.home img {
-    max-width: 80%;   /* Ensure the image is responsive and fits within the container */
-    height: auto;     /* Maintain aspect ratio */
-    display: block;   /* Ensures image is treated as a block element */
-    margin: 0 auto;   /* Center the image horizontally */
+/* Fixed state of navbar */
+.navbar.fixed {
+    position: fixed;
+    top: 0; /* Make the navbar stick to the top of the page */
+    left: 0;
+    right: 0;
+    padding: 20px 20px;
+    z-index: 1000; /* Ensure it's above other content */
+    background-color: rgba(0, 34, 63, 0.8); /* Optional: background color when fixed */
+    transform: translateY(0); /* Smoothly move it to the top */
 }
 
-/* Optional styling for content inside #home */
-.home .content {
+/* Hide the logo when navbar is fixed */
+.navbar.fixed .logo {
+    display: none; /* Hide the logo when navbar becomes fixed */
+}
+
+/* Make sure home section takes full height of the viewport */
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make it full height */
+    color: white; /* Text color */
+    text-align: center;
+}
+
+/* Expertise Section */
+#expertise {
+    padding: 50px;
+    color: white;
+    text-align: center;
+}
+
+#expertise h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Expertise Cards */
+.expertise-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.expertise-card {
+    background-color: transparent;
     padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.expertise-card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+/* Card Icons */
+.icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+/* Expertise Card Headings */
+.expertise-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.expertise-card h3 span {
+    color: #bbb;
+}
+
+/* Expertise Card Description */
+.expertise-card p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #bbb;
 }
