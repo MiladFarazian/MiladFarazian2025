@@ -1,0 +1,90 @@
+body {
+    background-color: rgb(0, 34, 63);
+    color: white;
+}
+
+/* Logo styling */
+.logo img {
+    width: 90px;
+    height: auto;
+}
+
+/* Logo positioning */
+.logo {
+    position: absolute;
+    left: 20px;
+}
+
+/* Style for the navbar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+/* Navigation links styling */
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    padding: 0px 20px;
+    position: relative;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+/* Default state of nav links */
+.nav-links li a {
+    text-decoration: none;
+    color: white; /* Default: all items white */
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect: The hovered item stays white */
+.nav-links li.inactive a {
+    color: gray; /* Non-hovered items turn gray */
+}
+
+/* When an item is hovered, we turn it white and keep the rest gray */
+.nav-links li:hover a {
+    color: white; /* The hovered item turns white */
+}
+
+/* Add numbers above each navbar item */
+.nav-links li::before {
+    content: attr(data-index); /* Use data-index value */
+    position: absolute;
+    top: -15px; /* Adjust position of the number */
+    right: 0px;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: gray; /* Default: gray color for numbers */
+    padding: 2px 5px;
+    border-radius: 50%; /* Optional: make it circular */
+}
+
+/* Hover effect: The hovered number turns white */
+.nav-links li:hover::before {
+    color: white; /* The hovered number turns white */
+}
+
+.home img {
+    max-width: 80%;   /* Ensure the image is responsive and fits within the container */
+    height: auto;     /* Maintain aspect ratio */
+    display: block;   /* Ensures image is treated as a block element */
+    margin: 0 auto;   /* Center the image horizontally */
+}
+
+/* Optional styling for content inside #home */
+.home .content {
+    padding: 20px;
+}
