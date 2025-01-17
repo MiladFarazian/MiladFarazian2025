@@ -24,3 +24,34 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('fixed');
     }
 });
+
+/* Select all anchor links in the navbar */
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent the default link behavior
+        const targetId = this.getAttribute('href'); // Get the target section ID
+        const targetSection = document.querySelector(targetId); // Select the target section
+
+        // Smoothly scroll to the target section
+        targetSection.scrollIntoView({
+            behavior: 'smooth', // Smooth scrolling animation
+            block: 'start' // Scroll to the top of the section
+        });
+    });
+});
+
+// Add toggle functionality for experience items
+document.querySelectorAll('.experience-item').forEach(item => {
+    const header = item.querySelector('.experience-header');
+    const details = item.querySelector('.experience-details');
+    const button = item.querySelector('.toggle-button');
+  
+    header.addEventListener('click', () => {
+      details.classList.toggle('active');
+      button.classList.toggle('active');
+  
+      // Update button text
+      button.textContent = details.classList.contains('active') ? '-' : '+';
+    });
+  });
+  

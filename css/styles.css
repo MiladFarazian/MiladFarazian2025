@@ -1,7 +1,25 @@
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
+/* Define the Alike font */
+@font-face {
+    font-family: 'Alike';
+    src: url('fonts/Alike.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color: rgb(0, 34, 63);
     color: white;
-    cursor: url('../images/pointer.png') 16 16;
+    cursor: url('../images/cursor.svg') 4 4, pointer;
+    font-family: 'Alike', sans-serif;
+}
+
+/* Darken cursor on hover */
+body:hover {
+    cursor: url('../images/cursor.svg') 4 4, pointer; /* Darker cursor when hovered */
 }
 
 /* Logo styling */
@@ -124,47 +142,229 @@ body {
     font-weight: bold;
 }
 
-/* Expertise Cards */
+/* Grid Container */
 .expertise-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for the cards */
+    gap: 30px; /* Space between cards */
+    padding: 20px; /* Space inside the border */
+    border: 1px solid white; /* White border for the grid container */
+    border-radius: 12px; /* Optional: Rounded edges for the grid */
+}
+
+/* Individual Expertise Cards */
+.expertise-card {
+    background-color: rgb(0, 57, 108);
+    border: 1px solid white; /* White border around each card */
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+}
+
+/* Hover effect for cards */
+.expertise-card:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
+/* Card Header: Align logo beside title */
+.card-header {
+    display: flex;
+    align-items: center; /* Center logo and title vertically */
+    gap: 10px; /* Space between logo and title */
+    margin-bottom: 15px;
+}
+
+/* Logo (Icon) Styling */
+.card-header .icon {
+    width: 40px;
+    height: 40px;
+}
+
+/* Title Styling */
+.card-header h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-header h3 span {
+    color: white; /* Highlight color */
+    font-size: x-large;
+    font-weight: 200;
+}
+
+/* Description Styling */
+.expertise-card h3 {
+    font-size: 16px;
+    font-weight: normal;
+    color: #bbb; /* Light gray for descriptions */
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+/* Styling for the #projects section */
+#projects {
     display: flex;
     justify-content: center;
     gap: 30px;
+    flex-wrap: wrap;
+    padding: 50px 10px;
 }
 
-.expertise-card {
-    background-color: transparent;
-    padding: 20px;
+/* Styling for each project card */
+.project-card {
     width: 300px;
-    border-radius: 8px;
+    background-color: #333;
+    border-radius: 12px;
+    overflow: hidden; /* Ensures images don't overflow card borders */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect for cards */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    color: white;
     text-align: center;
-    transition: transform 0.3s ease-in-out;
+    padding: 20px;
 }
 
-.expertise-card:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
+.project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners for the image */
 }
 
-/* Card Icons */
-.icon img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 20px;
-}
-
-/* Expertise Card Headings */
-.expertise-card h3 {
+/* Project card title */
+.project-card h4 {
     font-size: 24px;
-    margin-bottom: 15px;
+    margin-top: 15px;
     font-weight: bold;
 }
 
-.expertise-card h3 span {
-    color: #bbb;
+/* Project card description */
+.project-card p {
+    font-size: 16px;
+    color: #ccc; /* Light gray for the description text */
+    margin-top: 10px;
 }
 
-/* Expertise Card Description */
-.expertise-card p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #bbb;
+/* Hover effect for project card */
+.project-card:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
 }
+
+/* Optional: Styling for project card heading (hover effect on text) */
+.project-card h4:hover {
+    color: #ff4e50; /* Example of highlighting the heading */
+}
+
+/* Experience Section */
+#experience {
+    padding: 50px;
+    color: white;
+  }
+  
+  #experience h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Experience Container */
+  .experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+/* Experience Header */
+.experience-header {
+    display: flex;
+    justify-content: space-between; /* Ensures title and dates are on opposite sides */
+    align-items: center;
+    background-color: rgb(0, 57, 108); /* Set the specified background color */
+    padding: 10px 20px; /* Adjust padding to control header height */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    max-width: 800px; /* Set a maximum width for a shorter header */
+    margin: 0 auto; /* Center the header horizontally */
+}
+
+/* Title inside the header */
+.experience-header h3 {
+    margin: 0;
+    font-size: 18px; /* Adjust font size */
+    flex: 1; /* Allows the title to take up remaining space */
+    overflow: hidden; /* Prevent overflowing content */
+    text-overflow: ellipsis; /* Add ellipsis if the title is too long */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+/* Dates inside the header */
+.experience-header span {
+    margin-left: 10px; /* Space between title and dates */
+    font-size: 16px; /* Adjust font size */
+    text-align: right; /* Right-align the dates */
+    white-space: nowrap; /* Prevent line breaks */
+}
+  
+  /* Toggle Button */
+  .toggle-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .toggle-button.active {
+    transform: none; /* Rotate to indicate expanded state */
+  }
+  
+/* Experience Details */
+.experience-details {
+    display: none; /* Hidden by default */
+    background-color: #2a2a2a; /* Darker background for details */
+    padding: 20px;
+    border-radius: 0 0 8px 8px; /* Rounded corners for the bottom */
+    max-width: 800px; /* Match the width of the header */
+    margin: 20px auto 0; /* Center the details section */
+    color: white;
+}
+
+/* Active Details (Visible State) */
+.experience-details.active {
+    display: block; /* Show when active */
+}
+  
+  .meta-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  
+  .meta-info a {
+    color: #4f93ff; /* Link color */
+    text-decoration: none;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .tags span {
+    background-color: #4f93ff; /* Tag background */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+  
