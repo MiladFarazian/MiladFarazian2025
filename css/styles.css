@@ -190,20 +190,45 @@ body:hover {
     margin: 0;
 }
 
-.card-header h3 span {
+.card-header h4 span {
     color: white; /* Highlight color */
     font-size: x-large;
     font-weight: 200;
 }
 
-/* Description Styling */
+/* Expertise Cards Description */
 .expertise-card h3 {
-    font-size: 16px;
-    font-weight: normal;
-    color: #bbb; /* Light gray for descriptions */
-    line-height: 1.5;
-    margin-top: 10px;
+    position: relative; /* Make the parent element relative to position the pseudo-element */   
+    padding-left: 30px; /* Add space for the line */
+    font-size: 16px; /* Adjust font size for readability */
+    line-height: 1.5; /* Spacing between lines */
+    color: white;
+    margin: 0px;
 }
+
+.code{
+    opacity: 0.3;
+    color: white;
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    margin: 3px;
+}
+
+
+/* Add the vertical line with a pseudo-element */
+.expertise-card h3::before {
+    content: ""; /* Empty content for the line */
+    position: absolute; /* Position relative to the parent (h3) */
+    left: 15px; /* Align the line to the left */
+    margin-right: 10px;
+    top: 0; /* Start the line at the top of the text */
+    width: 1px; /* Thickness of the line */
+    height: 100%; /* Line height matches the text height */
+    background-color: white; /* Line color (light gray) */
+    opacity: 0.3;
+}
+
 
 /* Styling for the #projects section */
 #projects {
@@ -255,7 +280,7 @@ body:hover {
 
 /* Optional: Styling for project card heading (hover effect on text) */
 .project-card h4:hover {
-    color: #ff4e50; /* Example of highlighting the heading */
+    color: rgb(0, 31, 145); /* Example of highlighting the heading */
 }
 
 /* Experience Section */
@@ -283,7 +308,7 @@ body:hover {
     display: flex;
     justify-content: space-between; /* Ensures title and dates are on opposite sides */
     align-items: center;
-    background-color: rgb(0, 57, 108); /* Set the specified background color */
+    background-color: #4f93ff; /* Set the specified background color */
     padding: 10px 20px; /* Adjust padding to control header height */
     border-radius: 8px; /* Rounded corners */
     cursor: pointer;
@@ -328,30 +353,60 @@ body:hover {
 /* Experience Details */
 .experience-details {
     display: none; /* Hidden by default */
-    background-color: #2a2a2a; /* Darker background for details */
+    background-color: rgb(0, 57, 108); /* Darker background for details */
     padding: 20px;
     border-radius: 0 0 8px 8px; /* Rounded corners for the bottom */
     max-width: 800px; /* Match the width of the header */
     margin: 20px auto 0; /* Center the details section */
     color: white;
+    transition: max-height 0.3s ease; /* Smooth expand/collapse animation */
+    max-height: 0; /* Initially collapsed */
+    overflow: hidden; /* Prevent overflow during animation */
 }
 
 /* Active Details (Visible State) */
 .experience-details.active {
     display: block; /* Show when active */
 }
+
+.experience-header.active{
+    background-color: blue;
+}
+
+.details-content{
+    display: flex; /* Use Flexbox for layout */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Space out content and logo */
+    gap: 20px; /* Add space between the content and the logo */
+}
   
   .meta-info {
     display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
+    justify-content: start;
+    gap: 20px; /* Space between the location and link */
+    align-items: center; /* Ensure vertical alignment */
     font-size: 14px;
+    color: #538adb; /* Link color */
   }
   
-  .meta-info a {
-    color: #4f93ff; /* Link color */
+  .meta-info a{
+    display: flex;
+    margin: 0px 20px;
+    gap: 10px;
+    color: #538adb;
     text-decoration: none;
   }
+
+  .meta-icon {
+    width: 20px; /* Icon width */
+    height: auto; /* Maintain aspect ratio */
+    display: inline-block;
+    vertical-align: middle; /* Ensure proper alignment */
+}
+
+.details-logo-image{
+    width: 170px;
+}
   
   .tags {
     display: flex;
@@ -361,7 +416,7 @@ body:hover {
   }
   
   .tags span {
-    background-color: #4f93ff; /* Tag background */
+    background-color: #70c3ec; /* Tag background */
     color: white;
     padding: 5px 10px;
     border-radius: 12px;

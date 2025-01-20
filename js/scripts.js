@@ -45,13 +45,41 @@ document.querySelectorAll('.experience-item').forEach(item => {
     const header = item.querySelector('.experience-header');
     const details = item.querySelector('.experience-details');
     const button = item.querySelector('.toggle-button');
-  
+
     header.addEventListener('click', () => {
-      details.classList.toggle('active');
-      button.classList.toggle('active');
-  
-      // Update button text
-      button.textContent = details.classList.contains('active') ? '-' : '+';
+        if (details.classList.contains('active')) {
+            // Collapse the details
+            const height = details.scrollHeight; // Get current full height
+            details.style.maxHeight = height + 'px'; // Set current height
+            setTimeout(() => {
+                details.style.maxHeight = '0'; // Collapse smoothly
+            }, 10); // Ensure transition applies
+            button.textContent = '+';
+        } else {
+            // Expand the details
+            details.style.display = 'block'; // Make it visible
+            const fullHeight = details.scrollHeight + 'px'; // Get full height
+            details.style.maxHeight = '0'; // Start from collapsed state
+            setTimeout(() => {
+                details.style.maxHeight = fullHeight; // Expand to full height
+            }, 10); // Ensure transition applies
+            button.textContent = '-';
+
+            // Scroll into view
+            details.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+
+        // Toggle active class
+        details.classList.toggle('active');
     });
-  });
-  
+
+    // Reset `display` after transition ends
+    details.addEventListener('transitionend', () => {
+        if (!details.classList.contains('active')) {
+            details.style.display = 'none'; // Hide after transition finishes
+        }
+    });
+});
