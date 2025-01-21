@@ -64,42 +64,84 @@
   
   <section id="projects">
     <h2>My Work</h2>
+    <div class="projects-container">
+      <!-- Filter Buttons -->
+      <div class="filter-buttons">
+        <div>Filter by</div>
+        <button class="filter-btn" data-filter="all">All <sup class="project-count">0</sup></button>/
+        <button class="filter-btn" data-filter="Game Development">Game Development <sup class="project-count">0</sup></button>/
+        <button class="filter-btn" data-filter="A.I./Machine Learning">A.I./Machine Learning <sup class="project-count">0</sup></button>/
+        <button class="filter-btn" data-filter="Website Development">Website Development <sup class="project-count">0</sup></button>
+      </div>
   
-    <!-- Filter Buttons -->
-    <div class="filter-buttons">
-      <div>Filter by</div>
-      <button class="filter-btn" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="Game Development">Game Development</button>
-      <button class="filter-btn" data-filter="A.I./Machine Learning">A.I./Machine Learning</button>
-      <button class="filter-btn" data-filter="Website Development">Website Development</button>
+      <!-- Project Grid -->
+      <div class="project-grid">
+        <div class="project-card" data-category="Game Development">
+          <img src="images/game1.jpg" alt="Game Project 1" />
+          <div class="project-info">
+            <h3>Game Project 1</h3>
+            <p>Game Development</p>
+          </div>
+        </div>
+        <div class="project-card" data-category="A.I./Machine Learning">
+          <img src="images/emotions.png" alt="AI Project 1" />
+          <div class="project-info">
+            <h3>AI Project 1</h3>
+            <p>A.I./Machine Learning</p>
+          </div>
+        </div>
+        <div class="project-card" data-category="Website Development">
+          <img src="images/web1.jpg" alt="Web Project 1" />
+          <div class="project-info">
+            <h3>Web Project 1</h3>
+            <p>Website Development</p>
+          </div>
+        </div>
+        <div class="project-card large" data-category="Game Development">
+            <img src="images/bound.png" alt="Game Project 2" />
+            <div class="project-info">
+              <h3>Game Project 2</h3>
+              <p>Game Development</p>
+            </div>
+          </div>
+          <div class="project-card" data-category="A.I./Machine Learning">
+            <img src="images/ai2.jpg" alt="AI Project 2" />
+            <div class="project-info">
+              <h3>AI Project 2</h3>
+              <p>A.I./Machine Learning</p>
+            </div>
+          </div>
+          <div class="project-card large" data-category="Website Development">
+            <img src="images/web2.jpg" alt="Web Project 2" />
+            <div class="project-info">
+              <h3>Web Project 2</h3>
+              <p>Website Development</p>
+            </div>
+          </div>
+          <div class="project-card" data-category="Game Development">
+            <img src="images/game3.jpg" alt="Game Project 3" />
+            <div class="project-info">
+              <h3>Game Project 3</h3>
+              <p>Game Development</p>
+            </div>
+          </div>
+          <div class="project-card" data-category="A.I./Machine Learning">
+            <img src="images/ai3.jpg" alt="AI Project 3" />
+            <div class="project-info">
+              <h3>AI Project 3</h3>
+              <p>A.I./Machine Learning</p>
+            </div>
+          </div>
+          <div class="project-card" data-category="Website Development">
+            <img src="images/web3.jpg" alt="Web Project 3" />
+            <div class="project-info">
+              <h3>Web Project 3</h3>
+              <p>Website Development</p>
+            </div>
+          </div>
+      </div>
     </div>
-  
-    <!-- Project Grid -->
-    <div class="project-grid">
-      <div class="project-card" data-category="Game Development">
-        <img src="images/game1.jpg" alt="Game Project 1" />
-        <div class="project-info">
-          <h3>Game Project 1</h3>
-          <p>Game Development</p>
-        </div>
-      </div>
-      <div class="project-card" data-category="A.I./Machine Learning">
-        <img src="images/ai1.jpg" alt="AI Project 1" />
-        <div class="project-info">
-          <h3>AI Project 1</h3>
-          <p>A.I./Machine Learning</p>
-        </div>
-      </div>
-      <div class="project-card" data-category="Website Development">
-        <img src="images/web1.jpg" alt="Web Project 1" />
-        <div class="project-info">
-          <h3>Web Project 1</h3>
-          <p>Website Development</p>
-        </div>
-      </div>
-      <!-- Add more project cards with appropriate data-category attributes -->
-    </div>
-  </section>
+  </section>  
   
   
   
@@ -222,11 +264,40 @@
   </section>
 
   <section id="contact">
-    <h2>Contact</h2>
-    <div>
-        
-    </div>      
-  </section>
+    <h2>Get in Touch</h2>
+    <p>Feel free to reach out to me via this form or through the contact details below.</p>
+    
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+      
+      <!-- Add a success or error message container -->
+      <div id="response-message" style="margin-top: 20px; color: white;"></div>
+      
+  
+      <!-- Contact Details -->
+      <div class="contact-details">
+        <h3>Contact Info</h3>
+        <p>Email: <a href="mailto:your.email@example.com">miladfarazian@gmail.com</a></p>
+        <p>Phone: <a href="tel:+1234567890">+1 818 447 9511</a></p>
+        <p>Location: Los Angeles, CA, USA</p>
+      </div>
+    </div>
+  </section>  
   
 
   <footer>

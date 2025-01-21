@@ -104,3 +104,74 @@ filterButtons.forEach(button => {
     });
   });
 });
+
+// Add event listener to all forms with the class "contact-form"
+document.querySelectorAll('.contact-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Prevent the default form submission
+  
+      const responseMessage = document.getElementById('response-message'); // Message container
+  
+      // Get form data
+      const formData = new FormData(form);
+  
+      try {
+        // Submit form data to Formspree
+        const response = await fetch('https://formspree.io/f/mjkgbrkj', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: formData,
+        });
+  
+        if (response.ok) {
+          // Show success message
+          responseMessage.className = 'response-message success';
+          responseMessage.style.color = 'green';
+          responseMessage.textContent = 'Message sent successfully!';
+          form.reset(); // Clear the form fields
+        } else {
+          // Show error message
+          responseMessage.className = 'response-message error';
+          responseMessage.style.color = 'red';
+          responseMessage.textContent = 'Failed to send message. Please try again.';
+        }
+      } catch (error) {
+        // Show error message for network issues
+        responseMessage.className = 'response-message error';
+        responseMessage.style.color = 'red';
+        responseMessage.textContent =
+          'An error occurred. Please check your connection and try again.';
+      }
+    });
+  });
+
+// Count projects and update the numbers
+function updateProjectCounts() {
+    // Create a map to store project counts by category
+    const counts = { all: projectCards.length };
+  
+    // Count projects for each category
+    projectCards.forEach((card) => {
+      const category = card.getAttribute('data-category');
+      counts[category] = (counts[category] || 0) + 1;
+    });
+  
+    // Update the counts in the filter buttons
+    filterButtons.forEach((button) => {
+      const filter = button.getAttribute('data-filter');
+      const count = counts[filter] || 0;
+  
+      // Format the count as a two-digit number
+      const formattedCount = count.toString().padStart(2, '0');
+  
+      // Update the count element
+      const countElement = button.querySelector('.project-count');
+      countElement.textContent = formattedCount;
+    });
+}
+
+// Run the function on page load
+updateProjectCounts();
+
+  
+  
