@@ -131,10 +131,13 @@ body:hover {
 
 /* Expertise Section */
 #expertise {
-    padding: 50px;
+    padding: 50px; /* Maintain vertical padding */
     color: white;
     text-align: center;
+    max-width: 900px; /* Set a narrower maximum width */
+    margin: 0 auto; /* Center the section horizontally */
 }
+
 
 #expertise h2 {
     font-size: 36px;
@@ -146,7 +149,7 @@ body:hover {
 .expertise-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns for the cards */
-    gap: 30px; /* Space between cards */
+    gap: 20px; /* Space between cards */
     padding: 20px; /* Space inside the border */
     border: 1px solid white; /* White border for the grid container */
     border-radius: 12px; /* Optional: Rounded edges for the grid */
@@ -229,59 +232,91 @@ body:hover {
     opacity: 0.3;
 }
 
-
-/* Styling for the #projects section */
+.filter-buttons {
+    text-align: start;
+    margin-bottom: 20px;
+  }
+  
+  .filter-btn {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filter-btn:hover {
+    color: #4f93ff;
+  }
+  
+  .filter-btn.active {
+    background-color: #4f93ff;
+  }
+  
+/* Project Section */
 #projects {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding: 50px 10px;
-}
-
-/* Styling for each project card */
-.project-card {
-    width: 300px;
-    background-color: #333;
-    border-radius: 12px;
-    overflow: hidden; /* Ensures images don't overflow card borders */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect for cards */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    padding: 50px 20px;
     color: white;
     text-align: center;
-    padding: 20px;
-}
-
-.project-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px; /* Rounded corners for the image */
-}
-
-/* Project card title */
-.project-card h4 {
-    font-size: 24px;
-    margin-top: 15px;
+  }
+  
+  #projects h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
     font-weight: bold;
-}
-
-/* Project card description */
-.project-card p {
-    font-size: 16px;
-    color: #ccc; /* Light gray for the description text */
-    margin-top: 10px;
-}
-
-/* Hover effect for project card */
-.project-card:hover {
+  }
+  
+  /* Project Grid Layout */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between cards */
+    max-width: 1200px; /* Centered content width */
+    margin: 0 auto;
+  }
+  
+  /* Project Card */
+  .project-card {
+    background-color: #1e1e1e; /* Card background color */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effects */
+  }
+  
+  .project-card img {
+    width: 100%; /* Responsive image */
+    height: auto;
+    display: block;
+  }
+  
+  .project-card:hover {
     transform: translateY(-10px); /* Slight lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
-}
-
-/* Optional: Styling for project card heading (hover effect on text) */
-.project-card h4:hover {
-    color: rgb(0, 31, 145); /* Example of highlighting the heading */
-}
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+  }
+  
+  /* Project Info */
+  .project-info {
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .project-info h3 {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .project-info p {
+    font-size: 16px;
+    color: #ccc; /* Light gray text */
+    margin: 0;
+  }  
 
 /* Experience Section */
 #experience {
@@ -290,7 +325,7 @@ body:hover {
   }
   
   #experience h2 {
-    font-size: 36px;
+    font-size: 52px;
     margin-bottom: 30px;
     text-align: center;
     font-weight: bold;
@@ -359,7 +394,7 @@ body:hover {
     max-width: 800px; /* Match the width of the header */
     margin: 20px auto 0; /* Center the details section */
     color: white;
-    transition: max-height 0.3s ease; /* Smooth expand/collapse animation */
+    transition: max-height 0.5s ease; /* Smooth expand/collapse animation */
     max-height: 0; /* Initially collapsed */
     overflow: hidden; /* Prevent overflow during animation */
 }
@@ -370,7 +405,7 @@ body:hover {
 }
 
 .experience-header.active{
-    background-color: blue;
+    background-color: #3ab0ff;
 }
 
 .details-content{

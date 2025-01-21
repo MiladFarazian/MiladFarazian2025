@@ -53,7 +53,7 @@
         <div class="expertise-card">
             <div class="card-header">
                 <img src="images/machine_white.png" alt="Machine Learning Icon" class="icon" />
-                <h4><span>Artificial Intellgience/ Machine Learning</span></h4>
+                <h4><span>A.I./ Machine Learning</span></h4>
             </div>
             <h4 class="code">&lt;h3&gt;</h4>
             <h3>Proficient in building predictive models and working with large datasets for insights.</h3>
@@ -64,17 +64,44 @@
   
   <section id="projects">
     <h2>My Work</h2>
-    <div class="project-card">
-        <img src="project1.jpg" alt="Project 1">
-        <h4>Project One</h4>
-        <p>This is a brief description of the project.</p>
+  
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <div>Filter by</div>
+      <button class="filter-btn" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Game Development">Game Development</button>
+      <button class="filter-btn" data-filter="A.I./Machine Learning">A.I./Machine Learning</button>
+      <button class="filter-btn" data-filter="Website Development">Website Development</button>
+    </div>
+  
+    <!-- Project Grid -->
+    <div class="project-grid">
+      <div class="project-card" data-category="Game Development">
+        <img src="images/game1.jpg" alt="Game Project 1" />
+        <div class="project-info">
+          <h3>Game Project 1</h3>
+          <p>Game Development</p>
+        </div>
       </div>
-      <div class="project-card">
-        <img src="project2.jpg" alt="Project 2">
-        <h4>Project Two</h4>
-        <p>This is a brief description of the second project.</p>
-      </div>      
+      <div class="project-card" data-category="A.I./Machine Learning">
+        <img src="images/ai1.jpg" alt="AI Project 1" />
+        <div class="project-info">
+          <h3>AI Project 1</h3>
+          <p>A.I./Machine Learning</p>
+        </div>
+      </div>
+      <div class="project-card" data-category="Website Development">
+        <img src="images/web1.jpg" alt="Web Project 1" />
+        <div class="project-info">
+          <h3>Web Project 1</h3>
+          <p>Website Development</p>
+        </div>
+      </div>
+      <!-- Add more project cards with appropriate data-category attributes -->
+    </div>
   </section>
+  
+  
   
   <section id="experience">
     <h2>Professional Experience</h2>
@@ -134,7 +161,7 @@
                     <img src="images/link.png" alt="Link Icon" class="meta-icon" width="15px"/>
                     walmart.com
                   </a>
-              </div>
+            </div>
           <div class="details-content">
             <div>
                 <p>Pitched idea Cortex could be ran with a Command Line Interface with Node.js with 3 various proof-of-concepts</p>
@@ -197,7 +224,7 @@
   <section id="contact">
     <h2>Contact</h2>
     <div>
-    
+        
     </div>      
   </section>
   

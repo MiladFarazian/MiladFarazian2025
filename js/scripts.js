@@ -40,46 +40,67 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Add toggle functionality for experience items
 document.querySelectorAll('.experience-item').forEach(item => {
     const header = item.querySelector('.experience-header');
     const details = item.querySelector('.experience-details');
     const button = item.querySelector('.toggle-button');
 
     header.addEventListener('click', () => {
-        if (details.classList.contains('active')) {
-            // Collapse the details
-            const height = details.scrollHeight; // Get current full height
-            details.style.maxHeight = height + 'px'; // Set current height
-            setTimeout(() => {
-                details.style.maxHeight = '0'; // Collapse smoothly
-            }, 10); // Ensure transition applies
-            button.textContent = '+';
-        } else {
+        const isExpanding = !details.classList.contains('active');
+
+        if (isExpanding) {
             // Expand the details
             details.style.display = 'block'; // Make it visible
-            const fullHeight = details.scrollHeight + 'px'; // Get full height
-            details.style.maxHeight = '0'; // Start from collapsed state
+            const fullHeight = details.scrollHeight + 'px'; // Get the full height
+            details.style.maxHeight = '0'; // Reset height for transition
             setTimeout(() => {
-                details.style.maxHeight = fullHeight; // Expand to full height
-            }, 10); // Ensure transition applies
+                details.style.maxHeight = fullHeight; // Expand smoothly
+            }, 10); // Allow styles to apply before expanding
             button.textContent = '-';
-
-            // Scroll into view
-            details.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
+        } else {
+            // Collapse the details
+            const currentHeight = details.scrollHeight + 'px'; // Current visible height
+            details.style.maxHeight = currentHeight; // Set current height for transition
+            setTimeout(() => {
+                details.style.maxHeight = '0'; // Collapse smoothly
+            }, 10); // Allow styles to apply before collapsing
+            button.textContent = '+';
         }
 
-        // Toggle active class
+        // Toggle active class on details and header
         details.classList.toggle('active');
+        header.classList.toggle('active');
     });
 
-    // Reset `display` after transition ends
-    details.addEventListener('transitionend', () => {
-        if (!details.classList.contains('active')) {
-            details.style.display = 'none'; // Hide after transition finishes
+    details.addEventListener('transitionend', (event) => {
+        if (event.propertyName === 'max-height' && !details.classList.contains('active')) {
+            details.style.display = 'none'; // Hide completely after collapse
         }
     });
+});
+
+// Select all filter buttons and project cards
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+// Add click event listener to each filter button
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const filter = button.getAttribute('data-filter');
+
+    // Update active button
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    // Filter projects
+    projectCards.forEach(card => {
+      const category = card.getAttribute('data-category');
+
+      if (filter === 'all' || category === filter) {
+        card.style.display = 'block'; // Show matching projects
+      } else {
+        card.style.display = 'none'; // Hide non-matching projects
+      }
+    });
+  });
 });
