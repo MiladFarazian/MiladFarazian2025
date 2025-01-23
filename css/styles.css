@@ -733,7 +733,7 @@ body:hover {
     font-size: 20px;
     margin-top: 0px;
     margin-bottom: 15px;
-    font-size: x-large;
+    font-size: xx-large;
     color: white;
   }
   
@@ -744,13 +744,47 @@ body:hover {
   }
   
   .contact-details a {
-    color: #4f93ff;
+    color:white;
     text-decoration: none;
   }
   
   .contact-details a:hover {
     text-decoration: underline;
   }
+
+  /* Contact Item Styling */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    margin-bottom: 15px;
+  }
+  
+  .contact-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain; /* Ensures icons are scaled properly */
+  }
+  
+  /* Social Links Styling */
+  .social-links {
+    display: flex;
+    gap: 15px; /* Space between social icons */
+    margin-top: 20px;
+    justify-content: start;
+  }
+  
+  .social-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain; /* Ensures social icons are scaled properly */
+    transition: transform 0.3s ease; /* Add hover effect */
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    color: #4f93ff
+  }  
   
   .response-message {
     padding: 10px;

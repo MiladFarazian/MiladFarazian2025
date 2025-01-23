@@ -192,6 +192,16 @@ closeMenu.addEventListener('click', () => {
   dropdownMenu.classList.remove('show');
 });
 
+// Select all links inside the dropdown menu
+const dropdownLinks = dropdownMenu.querySelectorAll("a");
+
+// Close dropdown menu when a link is clicked
+dropdownLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    dropdownMenu.classList.remove("show");
+  });
+});
+
 
   
   
