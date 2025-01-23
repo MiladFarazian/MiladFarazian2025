@@ -116,8 +116,118 @@ body:hover {
 
 /* Hide the logo when navbar is fixed */
 .navbar.fixed .logo {
-    display: none; /* Hide the logo when navbar becomes fixed */
+    opacity: 0
 }
+
+/* Hamburger Menu (Hidden by Default) */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 5px;
+  }
+  
+  .menu-toggle .hamburger {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    position: relative;
+  }
+  
+  .menu-toggle .hamburger::before,
+  .menu-toggle .hamburger::after {
+    content: "";
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+  }
+  
+  .menu-toggle .hamburger::before {
+    top: -8px;
+  }
+  
+  .menu-toggle .hamburger::after {
+    top: 8px;
+  }
+  
+  /* Dropdown Menu (Hidden by Default) */
+  .dropdown-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #f0f0f0; /* Light background */
+    display: none; /* Hidden initially */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .dropdown-menu.show {
+    display: flex; /* Show the dropdown menu */
+    transform: translateY(0);
+  }
+  
+  .dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .dropdown-menu ul li {
+    margin: 15px 0;
+  }
+  
+  .dropdown-menu ul li a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #121212;
+    text-decoration: none;
+  }
+  
+  .dropdown-menu .dropdown-footer {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+  }
+  
+  /* Close Button */
+  .dropdown-menu .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #121212;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none !important; /* Hide navbar links on smaller screens */
+    }
+  
+    .menu-toggle {
+      display: flex; /* Show hamburger menu on mobile */
+    }
+  
+    .dropdown-menu {
+      display: flex; /* Ensure dropdown menu is usable */
+    }
+  }
+  
 
 /* Make sure home section takes full height of the viewport */
 #home {
@@ -134,7 +244,7 @@ body:hover {
     padding: 50px; /* Maintain vertical padding */
     color: white;
     text-align: center;
-    max-width: 900px; /* Set a narrower maximum width */
+    max-width: 1200px; /* Set a narrower maximum width */
     margin: 0 auto; /* Center the section horizontally */
 }
 
@@ -149,28 +259,30 @@ body:hover {
 .expertise-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns for the cards */
-    gap: 20px; /* Space between cards */
     padding: 20px; /* Space inside the border */
-    border: 1px solid white; /* White border for the grid container */
-    border-radius: 12px; /* Optional: Rounded edges for the grid */
 }
+
+/* Adjust layout for smaller screens */
+@media (max-width: 768px) {
+    .expertise-cards {
+      grid-template-columns: 1fr; /* 1 card per row for narrow screens */
+    }
+  }
 
 /* Individual Expertise Cards */
 .expertise-card {
-    background-color: rgb(0, 57, 108);
+    background-color: rgb(0, 57, 108, 100%);
     border: 1px solid white; /* White border around each card */
-    border-radius: 12px;
     padding: 20px;
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
 }
 
-/* Hover effect for cards */
 .expertise-card:hover {
-    transform: translateY(-10px); /* Slight lift on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-}
+  }
 
 /* Card Header: Align logo beside title */
 .card-header {
@@ -275,69 +387,112 @@ body:hover {
     font-weight: bold;
   }
   
-  /* Project Grid Layout */
-  .project-grid {
+  /* Project Grid */
+.project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));/* Responsive columns */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for cards */
     gap: 20px; /* Space between cards */
-    max-width: 1200px; /* Centered content width */
-    margin: 0 auto;
-    grid-auto-flow: dense;
-  }
-
-  /* Large Card (2/3 width) */
-.project-card.large {
-    grid-column: span 2;
-    grid-row: span 2; /* Large cards take 2 rows */
-}
-
-  /* Projects Container */
-.projects-container {
-    max-width: 1200px; /* Align with grid width */
-    margin: 0 auto; /* Center content */
-    text-align: left; /* Align "Filter by" text and buttons with grid */
+    max-width: 1200px; /* Grid container width */
+    margin: 0 auto; /* Center grid */
+    grid-auto-flow: dense; /* Allow cards to fill empty spaces */
   }
   
   /* Project Card */
   .project-card {
-    background-color: #1e1e1e; /* Card background color */
-    border-radius: 12px;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    justify-content: space-between; /* Keep text at the bottom */
+    background-color: #00305a; /* Card background color */
+    border-radius: 12px; /* Rounded corners */
+    overflow: hidden; /* Prevent overflow from large images */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effects */
-    aspect-ratio: 3 / 2; /* Maintain aspect ratio (3:2) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    aspect-ratio: 3 / 2; /* Maintain consistent aspect ratio */
+    position: relative; /* Allows positioning of elements like badges */
   }
   
-  .project-card img {
-    width: 100%; /* Responsive image */
-    height: auto;
-    display: block;
+  /* Large Cards */
+  .project-card.large {
+    grid-column: span 2; /* Large card spans two columns */
+    grid-row: span 2; /* Large card spans two rows */
   }
   
-  .project-card:hover {
-    transform: translateY(-10px); /* Slight lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-  }
+.project-card img {
+  width: 100%; /* Stretch to fit card width */
+  height: auto; /* Maintain image aspect ratio */
+  max-height: calc(100% - 70px); /* Restrict image height to leave space for text */
+  object-fit: cover; /* Crop image to fit dimensions */
+  object-position: top; /* Anchor the image to the top and cut off the bottom */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
   
-  /* Project Info */
+  /* Project Info Section */
   .project-info {
-    padding: 20px;
-    text-align: left;
+    padding: 15px;
+    background-color: #00305a; /* Same as the card background */
+    color: #b0daff; /* Light blue text */
+    display: flex;
+    flex-direction: column; /* Stack title and category */
+    justify-content: flex-end; /* Align text to the bottom */
+    text-align: left; /* Align text to the left */
+    z-index: 1; /* Ensure it appears above other content */
   }
   
+  /* Project Title */
   .project-info h3 {
-    font-size: 20px;
-    margin: 0;
-    margin-bottom: 10px;
+    font-size: 18px;
     font-weight: bold;
+    margin: 0 0 5px; /* Add spacing below the title */
     color: white;
   }
   
+  /* Project Category */
   .project-info p {
-    font-size: 16px;
-    color: #ccc; /* Light gray text */
-    margin: 0;
-  }  
+    font-size: 14px;
+    margin: 0; /* No extra margin */
+    color: #b0daff;
+  }
+  
+  /* Badge or Icon in the Top Left Corner (Optional) */
+  .project-card .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4caf50; /* Green badge */
+    color: white;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for the badge */
+    z-index: 2; /* Ensure badge stays on top */
+  }
+  
+  /* Hover Effects */
+  .project-card:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .project-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust card size for smaller screens */
+    }
+  
+    .project-card.large {
+      grid-column: span 1; /* Large cards span full width on mobile */
+      grid-row: span 1;
+    }
+  }
+
+  /* Projects Container */
+.projects-container {
+  max-width: 1200px; /* Center the grid */
+  margin: 0 auto; /* Horizontally center content */
+  text-align: left; /* Align content to the left */
+}
+    
 
 /* Experience Section */
 #experience {
@@ -514,7 +669,7 @@ body:hover {
   .contact-form {
     flex: 1 1 500px; /* Flexible form width */
     max-width: 600px;
-    background-color: #1e1e1e; /* Form background */
+    background-color: #00305a; /* Form background */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
@@ -537,7 +692,7 @@ body:hover {
     padding: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #333;
+    background-color: #00223f;
     color: white;
     font-size: 14px;
     outline: none;
@@ -569,15 +724,16 @@ body:hover {
   /* Contact Details */
   .contact-details {
     flex: 1 1 300px; /* Flexible width for details */
-    padding: 20px;
-    background-color: #1e1e1e;
+    padding: 0px 20px;
+    background-color: transparent;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   }
   
   .contact-details h3 {
     font-size: 20px;
+    margin-top: 0px;
     margin-bottom: 15px;
+    font-size: x-large;
     color: white;
   }
   
@@ -611,5 +767,65 @@ body:hover {
     background-color: #f44336; /* Red */
     color: white;
   }
+
+ /* Popup Overlay */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the popup */
+    width: 20%; /* Set width */
+    max-width: 600px; /* Limit maximum width */
+    aspect-ratio: 5 / 3; /* Enforce 2:3 landscape ratio */
+    background-color: white;
+    color: #00305a;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    z-index: 9999; /* Ensure it overlays other content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Hide popup by default */
+  .popup.hidden {
+    display: none;
+  }
+  
+  /* Success and Error Styles */
+  .popup.success {
+    background-color: #4caf50; /* Green for success */
+    color: white;
+  }
+  
+  .popup.error {
+    background-color: #f44336; /* Red for error */
+    color: white;
+  }
+  
+  /* Close Button */
+  .popup button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    margin-top: 20px; /* Add spacing */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .popup button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: black;
+  }
+  
+  
+  
+  
   
   

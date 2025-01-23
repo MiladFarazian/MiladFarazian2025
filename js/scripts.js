@@ -105,45 +105,49 @@ filterButtons.forEach(button => {
   });
 });
 
+// Show the response-message popup
+function showPopup(message, isSuccess = true) {
+    const responseMessage = document.getElementById('response-message');
+
+    // Set the message and style
+    responseMessage.textContent = message;
+    responseMessage.className = `popup ${isSuccess ? 'success' : 'error'}`;
+    responseMessage.classList.remove('hidden');
+
+    // Auto-hide the popup after 3 seconds
+    setTimeout(() => {
+        responseMessage.classList.add('hidden');
+    }, 3000);
+}
+  
 // Add event listener to all forms with the class "contact-form"
 document.querySelectorAll('.contact-form').forEach((form) => {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // Prevent the default form submission
-  
-      const responseMessage = document.getElementById('response-message'); // Message container
-  
-      // Get form data
-      const formData = new FormData(form);
-  
-      try {
-        // Submit form data to Formspree
-        const response = await fetch('https://formspree.io/f/mjkgbrkj', {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: formData,
-        });
-  
-        if (response.ok) {
-          // Show success message
-          responseMessage.className = 'response-message success';
-          responseMessage.style.color = 'green';
-          responseMessage.textContent = 'Message sent successfully!';
-          form.reset(); // Clear the form fields
-        } else {
-          // Show error message
-          responseMessage.className = 'response-message error';
-          responseMessage.style.color = 'red';
-          responseMessage.textContent = 'Failed to send message. Please try again.';
-        }
-      } catch (error) {
-        // Show error message for network issues
-        responseMessage.className = 'response-message error';
-        responseMessage.style.color = 'red';
-        responseMessage.textContent =
-          'An error occurred. Please check your connection and try again.';
-      }
+form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    // Get form data
+    const formData = new FormData(form);
+
+    try {
+    // Submit form data to Formspree
+    const response = await fetch('https://formspree.io/f/mjkgbrkj', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
     });
-  });
+
+    if (response.ok) {
+        showPopup('Message sent successfully!', true);
+        form.reset(); // Clear form fields
+    } else {
+        showPopup('Failed to send message. Please try again.', false);
+    }
+    } catch (error) {
+    showPopup('An error occurred. Please check your connection and try again.', false);
+    }
+});
+});
+  
 
 // Count projects and update the numbers
 function updateProjectCounts() {
@@ -172,6 +176,22 @@ function updateProjectCounts() {
 
 // Run the function on page load
 updateProjectCounts();
+
+// Select DOM Elements
+const menuToggle = document.getElementById('menu-toggle');
+const dropdownMenu = document.getElementById('dropdown-menu');
+const closeMenu = document.getElementById('close-menu');
+
+// Open Dropdown Menu
+menuToggle.addEventListener('click', () => {
+  dropdownMenu.classList.add('show');
+});
+
+// Close Dropdown Menu
+closeMenu.addEventListener('click', () => {
+  dropdownMenu.classList.remove('show');
+});
+
 
   
   

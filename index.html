@@ -11,17 +11,40 @@
 <body>
     <header>
         <nav class="navbar">
-          <div class="logo">
-            <img src="images/Milad_White.png" alt="Logo" />
-          </div>
-          <ul class="nav-links">
-            <li data-index="01"><a href="#home">// home</a></li>
-            <li data-index="02"><a href="#expertise">// expertise</a></li>
-            <li data-index="03"><a href="#projects">// work</a></li>
-            <li data-index="04"><a href="#experience">// experience</a></li>
-            <li data-index="05"><a href="#contact">// contact</a></li>
-          </ul>
+            <div class="navbar-container">
+                <div class="logo">
+                    <img src="images/Milad_White.png" alt="Logo" />
+                </div>
+                <!-- Hamburger Menu (Hidden on Desktop) -->
+                <div class="menu-toggle" id="menu-toggle">
+                    <span class="hamburger"></span>
+                </div>
+                <ul class="nav-links">
+                    <li data-index="01"><a href="#home">// home</a></li>
+                    <li data-index="02"><a href="#expertise">// expertise</a></li>
+                    <li data-index="03"><a href="#projects">// work</a></li>
+                    <li data-index="04"><a href="#experience">// experience</a></li>
+                    <li data-index="05"><a href="#contact">// contact</a></li>
+                </ul>
+
+                <!-- Dropdown Menu (Hidden by Default) -->
+                <div class="dropdown-menu hidden" id="dropdown-menu">
+                    <button class="close-btn" id="close-menu">&times;</button>
+                    <ul>
+                    <li><a href="#home">// home</a></li>
+                    <li><a href="#expertise">// expertise</a></li>
+                    <li><a href="#work">// work</a></li>
+                    <li><a href="#experience">// experience</a></li>
+                    <li><a href="#contact">// contact</a></li>
+                    </ul>
+                    <div class="dropdown-footer">
+                        <p>© 2024. Made with passion by Milad Farazian.</p>
+                        <p>All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
         </nav>
+          
       </header>
       
 
@@ -43,7 +66,7 @@
         </div>
         <div class="expertise-card">
             <div class="card-header">
-                <img src="images/frontend_white.png" alt="Frontend Development Icon" class="icon" />
+                <img src="images/react.png" alt="Frontend Development Icon" class="icon" />
                 <h4><span>Frontend Dev React, NextJS</span></h4>
             </div>
             <h4 class="code">&lt;h3&gt;</h4>
@@ -77,7 +100,7 @@
       <!-- Project Grid -->
       <div class="project-grid">
         <div class="project-card" data-category="Game Development">
-          <img src="images/game1.jpg" alt="Game Project 1" />
+          <img src="images/black.png" alt="Game Project 1" />
           <div class="project-info">
             <h3>Game Project 1</h3>
             <p>Game Development</p>
@@ -91,7 +114,7 @@
           </div>
         </div>
         <div class="project-card" data-category="Website Development">
-          <img src="images/web1.jpg" alt="Web Project 1" />
+          <img src="images/black.png" alt="Web Project 1" />
           <div class="project-info">
             <h3>Web Project 1</h3>
             <p>Website Development</p>
@@ -100,40 +123,40 @@
         <div class="project-card large" data-category="Game Development">
             <img src="images/bound.png" alt="Game Project 2" />
             <div class="project-info">
-              <h3>Game Project 2</h3>
+              <h3>BOUND</h3>
               <p>Game Development</p>
             </div>
           </div>
           <div class="project-card" data-category="A.I./Machine Learning">
-            <img src="images/ai2.jpg" alt="AI Project 2" />
+            <img src="images/black.png" alt="AI Project 2" />
             <div class="project-info">
               <h3>AI Project 2</h3>
               <p>A.I./Machine Learning</p>
             </div>
           </div>
           <div class="project-card large" data-category="Website Development">
-            <img src="images/web2.jpg" alt="Web Project 2" />
+            <img src="images/black.png" alt="Web Project 2" />
             <div class="project-info">
               <h3>Web Project 2</h3>
               <p>Website Development</p>
             </div>
           </div>
           <div class="project-card" data-category="Game Development">
-            <img src="images/game3.jpg" alt="Game Project 3" />
+            <img src="images/black.png" alt="Game Project 3" />
             <div class="project-info">
               <h3>Game Project 3</h3>
               <p>Game Development</p>
             </div>
           </div>
           <div class="project-card" data-category="A.I./Machine Learning">
-            <img src="images/ai3.jpg" alt="AI Project 3" />
+            <img src="images/black.png" alt="AI Project 3" />
             <div class="project-info">
               <h3>AI Project 3</h3>
               <p>A.I./Machine Learning</p>
             </div>
           </div>
           <div class="project-card" data-category="Website Development">
-            <img src="images/web3.jpg" alt="Web Project 3" />
+            <img src="images/black.png" alt="Web Project 3" />
             <div class="project-info">
               <h3>Web Project 3</h3>
               <p>Website Development</p>
@@ -283,10 +306,7 @@
           <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
         </div>
         <button type="submit" class="submit-btn">Send Message</button>
-      </form>
-      
-      <!-- Add a success or error message container -->
-      <div id="response-message" style="margin-top: 20px; color: white;"></div>
+    </form>
       
   
       <!-- Contact Details -->
@@ -299,6 +319,9 @@
     </div>
   </section>  
   
+  <div id="response-message" class="popup hidden">
+    <button onclick="closePopup()">X</button>
+  </div>
 
   <footer>
     <!-- Footer content will go here -->
