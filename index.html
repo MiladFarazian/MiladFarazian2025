@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal Portfolio">
+  <title>Milad Farazian</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="images/faveicon_dark.png" type="image/png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <img src="images/Milad_White.png" alt="Logo" />
+                </div>
+                <!-- Hamburger Menu (Hidden on Desktop) -->
+                <div class="menu-toggle" id="menu-toggle">
+                    <span class="hamburger"></span>
+                </div>
+                <ul class="nav-links">
+                    <li data-index="01"><a href="#home">// home</a></li>
+                    <li data-index="02"><a href="#expertise">// expertise</a></li>
+                    <li data-index="03"><a href="#projects">// work</a></li>
+                    <li data-index="04"><a href="#experience">// experience</a></li>
+                    <li data-index="05"><a href="#contact">// contact</a></li>
+                </ul>
+
+                <!-- Dropdown Menu (Hidden by Default) -->
+                <div class="dropdown-menu hidden" id="dropdown-menu">
+                    <button class="close-btn" id="close-menu">&times;</button>
+                    <ul>
+                    <li><a href="#home">// home</a></li>
+                    <li><a href="#expertise">// expertise</a></li>
+                    <li><a href="#work">// work</a></li>
+                    <li><a href="#experience">// experience</a></li>
+                    <li><a href="#contact">// contact</a></li>
+                    </ul>
+                    <div class="dropdown-footer">
+                        <p>© 2024. Made with passion by Milad Farazian.</p>
+                        <p>All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+          
+      </header>
+      
+
+    <section id="home">
+        <div class="video-wrapper">
+            <video class="home-video" preload="auto" autoplay loop muted>
+            <source src="videos/home.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+            <!-- Gradient Overlay -->
+            <div class="gradient-overlay"></div>
+        </div>
+        <!-- Overlay Content -->
+        <div class="home-overlay">
+            <img id="gif" src="images/milad.gif" alt="Logo" class="home-logo">
+            <h2 class="home-subtitle">Software Engineer | Machine Learning Engineer</h2>
+        </div>
+    </section>
+      
+  
+  <section id="expertise">
+    <h2>My Expertise</h2>
+    <div class="expertise-cards">
+        <div class="expertise-card">
+            <div class="card-header">
+                <img src="images/software_white.png" alt="Software Development Icon" class="icon" />
+                <h4><span>Software Development</span></h4>
+            </div>
+            <h4 class="code">&lt;h3&gt;</h4>
+            <h3>Experienced in designing scalable systems and implementing best practices for clean code.</h3>
+            <h4 class="code">&lt;/h3&gt;</h4>
+        </div>
+        <div class="expertise-card">
+            <div class="card-header">
+                <img src="images/react.png" alt="Frontend Development Icon" class="icon" />
+                <h4><span>Frontend Dev React, NextJS</span></h4>
+            </div>
+            <h4 class="code">&lt;h3&gt;</h4>
+            <h3>Expertise in crafting intuitive user interfaces and delivering seamless user experiences.</h3>
+            <h4 class="code">&lt;/h3&gt;</h4>
+        </div>
+        <div class="expertise-card">
+            <div class="card-header">
+                <img src="images/machine_white.png" alt="Machine Learning Icon" class="icon" />
+                <h4><span>A.I./ Machine Learning</span></h4>
+            </div>
+            <h4 class="code">&lt;h3&gt;</h4>
+            <h3>Proficient in building predictive models and working with large datasets for insights.</h3>
+            <h4 class="code">&lt;/h3&gt;</h4>
+        </div>
+    </div>
+  </section>
+  
+  <section id="projects">
+    <h2>My Work</h2>
+    <div class="projects-container">
+      
+            <!-- Dropdown Toggle (Visible on Mobile Only) -->
+        <button class="collapsible-toggle">Filter Projects</button>
+
+        <!-- Filter Buttons -->
+      <div class="filter-buttons">
+        <div class="filter-label">Filter by</div>
+        <button class="filter-btn" data-filter="all">All <sup class="project-count">0</sup></button>
+        <button class="filter-btn" data-filter="Game Development">Game Development <sup class="project-count">0</sup></button>
+        <button class="filter-btn" data-filter="A.I./Machine Learning">A.I./Machine Learning <sup class="project-count">0</sup></button>
+        <button class="filter-btn" data-filter="Website Development">Website Development <sup class="project-count">0</sup></button>
+        <button class="filter-btn" data-filter="Presentations/Papers">Presentations/Papers <sup class="project-count">0</sup></button>
+      </div>
+  
+      <!-- Project Grid -->
+      <div class="project-grid">
+        <div class="project-card" data-title="Katsuya's Revenge"
+                                  data-description="Katsuya, a banished Samurai, dawns a hidden persona as a ninja to avenge the death of his sensei by the corrupted Samurai Kapudo. A 2D Platformer made by Kobe Shavolian, Keon Etebari, and yours truly in AP Computer Science. Restored and presented by Milad Farazian." 
+                                  data-category="Game Development" 
+                                  data-image="images/katsuya.png" 
+                                  data-technologies="Java">
+          <img src="images/katsuya.png" alt="Game Project 1" />
+          <div class="project-info">
+            <h3>Katsuya's Revenge</h3>
+            <p>Game Development</p>
+          </div>
+        </div>
+        <div class="project-card" data-title="Emotion Translating using Transformers" 
+                                  data-description="Developed a model that can change the emotion of a particular statement without changing the context of the sentence. Worked alongside Charlie Floeder, Rizq Khateeb, Harshit Shah, Yash Sharma" 
+                                  data-category="A.I./Machine Learning" 
+                                  data-image="images/emotions.png" 
+                                  data-technologies="Python">
+          <img src="images/emotions.png" alt="AI Project 1" />
+          <div class="project-info">
+            <h3>Emotion Translating using Transformers</h3>
+            <p>A.I./Machine Learning</p>
+          </div>
+        </div>
+        <div class="project-card" data-title="USURPUR" 
+                                  data-description="Website for debut short film USURPER by Edward Avalos" 
+                                  data-category="Website Development" 
+                                  data-image="images/scream.png" 
+                                  data-technologies="HTML, CSS, Javascript">
+          <img src="images/scream.png" alt="Web Project 1" />
+          <div class="project-info">
+            <h3>USURPUR</h3>
+            <p>Website Development</p>
+          </div>
+        </div>
+        <div class="project-card large" data-title="BOUND" 
+                                        data-description="First game I made by myself, using libraries and techniques I picked up teaching Java to iDTech campers. Recently converted to p5.js to make playable as a Javascript Webapp. Check it out!" 
+                                        data-category="Game Development" 
+                                        data-image="images/bound.png" 
+                                        data-technologies="Java with PApplet and CoreProcessing, HTML, CSS, Javascript"
+                                        data-link="bound.html">
+            <img src="images/bound.png" alt="Game Project 2" />
+            <div class="project-info">
+              <h3>BOUND</h3>
+              <p>Game Development</p>
+            </div>
+          </div>
+          <div class="project-card" data-title="Implementation of Abbasi et al's LMBiS-Net" 
+                                    data-description="Our team implemented Abbasi et al’s Paper: “LMBiS-Net: A Lightweight Multipath ​Bidirectional Skip Connection based CNN for Retinal Blood Vessel Segmentation”. We were the first publically available implementation of their concept. Worked alongside
+                                    Charlie Floeder, Rizq Khateeb, Harshit Shah, Yash Sharma" 
+                                    data-category="A.I./Machine Learning" 
+                                    data-image="images/LMBiS.png" 
+                                    data-technologies="Python">
+            <img src="images/LMBiS.png" alt="AI Project 2" />
+            <div class="project-info">
+              <h3>Implementation of Abbasi et al's LMBiS-Net</h3>
+              <p>A.I./Machine Learning</p>
+            </div>
+          </div>
+          <div class="project-card large" data-title="Innsæi" 
+                                          data-description="A Twitter-esque social media Webapp. Meant to claim the mission of the original Twitter: To give everyone the power to create and share ideas and information instantly, without barriers. Innsæi, an Icelandic word for &quot;the sea within&quot;, aims to helps people to broadcast the significant thoughts on their minds" 
+                                          data-category="Website Development" 
+                                          data-image="images/Innsæi.png" 
+                                          data-technologies="React JS, Javascript, HTML, CSS">
+            <img src="images/Innsæi.png" alt="Web Project 2" />
+            <div class="project-info">
+              <h3>Innsæi</h3>
+              <p>Website Development</p>
+            </div>
+          </div>
+          <div class="project-card" data-title="Snake" 
+                                    data-description="An arcade classic. Not really much else to say" 
+                                    data-category="Game Development" 
+                                    data-image="images/snake.png" 
+                                    data-technologies="Python">
+            <img src="images/snake.png" alt="Game Project 3" />
+            <div class="project-info">
+              <h3>Snake</h3>
+              <p>Game Development</p>
+            </div>
+          </div>
+          <div class="project-card" data-title="LLM Distillation for Financial Reports" 
+                                    data-description="" 
+                                    data-category="A.I/Machine Learning" 
+                                    data-image="images/financial.png" 
+                                    data-technologies="Python">
+            <img src="images/financial.png" alt="AI Project 3" />
+            <div class="project-info">
+              <h3>LLM Distillation for Financial Reports</h3>
+              <p>A.I./Machine Learning</p>
+            </div>
+          </div>
+          <div class="project-card" data-title="Canvas Year in Review" 
+                                    data-description="Similar to a Spotify Wrapped, this Chrome Extension add-on scrapes data from your Canvas account and presents your stats for the semester. A good gauge to see how you are doing in your classes!" 
+                                    data-category="Website Development" 
+                                    data-image="images/canvas.png" 
+                                    data-technologies="Javascript, HTML, CSS">
+            <img src="images/canvas.png" alt="Web Project 2" />
+            <div class="project-info">
+              <h3>Canvas Year in Review</h3>
+              <p>Website Development</p>
+            </div>
+          </div>
+          <div class="project-card" data-title="How Machines Learn to Discriminate" 
+                                    data-description="Inspired by Professor Lise Getoor's Ethics & Algorithms course as well as Ruha Benjamin's The New Jim Code, I present how even with the absence of mal intent that algorithms using past real-life data have the tendency to automate existing discrimination on the basis of race and sex" 
+                                    data-category="Presentations/Papers" 
+                                    data-image="images/Machines.png" 
+                                    data-technologies="Google Slides">
+            <img src="images/Machines.png" alt="Presentations/Papers 1" />
+            <div class="project-info">
+              <h3>How Machines Learn to Discriminate</h3>
+              <p>Presentation/Papers</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>  
+  
+  <div id="project-modal" class="modal hidden">
+    <div class="modal-content">
+        <a class="modal-close" href="#">
+            <span class="arrow">←</span> <span class="back">Back to Projects</span>
+        </a>        
+        <div class="modal-body">
+            <div class="modal-content-container">
+                <!-- Full-width title -->
+                <h2 class="modal-title"></h2>
+            
+                <!-- Left and Right Sections in a flex container -->
+                <div class="modal-left-right">
+                    <!-- Left Section -->
+                    <div class="modal-left">
+                        <nav class="breadcrumb">
+                            Home &gt; Portfolio &gt; <span class="modal-project-title"></span>
+                        </nav>
+                        <p class="modal-description"></p>
+                    </div>
+            
+                    <!-- Right Section -->
+                    <div class="modal-right">
+                        <img class="modal-image" src="" alt="Project Image">
+                        <div class="modal-details">
+                            <h3>Technologies Used:</h3>
+                            <p class="modal-technologies"></p>
+                        </div>
+                        <a class="modal-open" href="" target="_blank">
+                            <span class="open">Open Project </span> <span class="arrow">→</span>
+                        </a>  
+                        <!-- Project Navigation -->
+                        <div class="modal-navigation">
+                          <button id="prev-project" class="nav-button">←</button>
+                          <button id="next-project" class="nav-button">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+  </div>  
+  
+  <section id="experience">
+    <h2>Professional Experience</h2>
+    <div class="experience-container">
+  
+      <!-- Experience Item 1 -->
+      <div class="experience-item">
+        <div class="experience-header">
+          <h3>Full-Stack Software Engineer @ Walmart</h3>
+          <span>2022 - 2023</span>
+          <button class="toggle-button">+</button>
+        </div>
+        <div class="experience-details">
+          <div class="meta-info">
+            <span>
+                <img src="images/location.png" alt="Location Icon" class="meta-icon" width="15px"/>
+                Sunnyvale, CA, USA
+              </span>
+              <a href="https://walmart.com" target="_blank">
+                <img src="images/link.png" alt="Link Icon" class="meta-icon" width="15px"/>
+                walmart.com
+              </a>
+          </div>
+          <div class="details-content">
+            <div>
+                <p>Engaged hands-on with the NLP team to add 10+ features to Walmart's central chatbot dialogflow platform Converse Self Serve</p>
+                <p>Integrated push notification API onto servers for Last Mile Delivery on a 4 person team and coordinating with team in India</p>
+                <p>Added 32 configuration features and 50+ testing capabilities from Cortex into the recently acquired Botmock (Self Serve)</p>
+            </div>
+            <div class="details-logo">
+                <img src="images/walmart.png" alt="Walmart Logo" class="details-logo-image"/>
+            </div>
+          </div>
+          
+          <div class="tags">
+            <span>HTML/CSS</span>
+            <span>Javascript</span>
+            <span>Python</span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Experience Item 2 -->
+      <div class="experience-item">
+        <div class="experience-header">
+          <h3>Global Software Engineer Intern @ Walmart</h3>
+          <span>2021 - 2021</span>
+          <button class="toggle-button">+</button>
+        </div>
+        <div class="experience-details">
+            <div class="meta-info">
+                <span>
+                    <img src="images/location.png" alt="Location Icon" class="meta-icon" width="15px"/>
+                    Sunnyvale, CA, USA
+                  </span>
+                  <a href="https://walmart.com" target="_blank">
+                    <img src="images/link.png" alt="Link Icon" class="meta-icon" width="15px"/>
+                    walmart.com
+                  </a>
+            </div>
+          <div class="details-content">
+            <div>
+                <p>Pitched idea Cortex could be ran with a Command Line Interface with Node.js with 3 various proof-of-concepts</p>
+                <p>Collaborated with a 10 member team to create a Customer Satisfaction CSAT rating button and develop backend processes for
+                Walmart's Converse platform. Feature produced 6 million ratings expressed by customer base as of March of 2022</p>
+            </div>
+            <div class="details-logo">
+                <img src="images/walmart.png" alt="Walmart Logo" class="details-logo-image"/>
+            </div>
+          </div>
+          <div class="tags">
+            <span>Java</span>
+            <span>Python</span>
+            <span>HTML/CSS</span>
+            <span>Javascript</span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Experience Item 3 -->
+      <div class="experience-item">
+        <div class="experience-header">
+          <h3>SQL Database Intern @ Sustainable Systems Research Foundation</h3>
+          <span>2020 - 2021</span>
+          <button class="toggle-button">+</button>
+        </div>
+        <div class="experience-details">
+          <div class="meta-info">
+                <div class="meta-info">
+                    <span>
+                        <img src="images/location.png" alt="Location Icon" class="meta-icon"/>
+                        Santa Cruz, CA, USA
+                      </span>
+                      <a href="https://sustainablesystemsfoundation.org/" target="_blank">
+                        <img src="images/link.png" alt="Link Icon" class="meta-icon"/>
+                        https://sustainablesystemsfoundation.org/
+                      </a>
+                </div>
+          </div>
+          <div class="details-content">
+            <div>
+                <p>Cooperated with a 9 member team to be able to filter through 600+ items based on different types of products/certifications</p>
+                <p>Spearheaded the integration of multiple databases into a streamlined web application, enabling over 15 restaurant and grocery
+                    store owners to efficiently select eco-friendly plates, bowls, and other biodegradable materials</p>
+            </div>
+            <div class="details-logo">
+                <img src="images/ssrf.png" alt="SSRF Logo" class="details-logo-image"/>
+            </div>
+          </div>
+          <div class="tags">
+            <span>HTML/CSS</span>
+            <span>Javascript</span>
+            <span>Python</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="creative">
+    <h2>My Creative Side...</h2>
+    <div class="creative-card">
+        <a href="creative.html"><img src="images/creative.png" alt="AI Project 2" /></a>
+      </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <p>Feel free to reach out to me via this form or through the contact details below.</p>
+    
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+      
+  
+      <!-- Contact Details -->
+    <div class="contact-details">
+        <h3>Contact Info</h3>
+        <div class="contact-item">
+            <i class="fas fa-envelope social-icon"></i>
+            <a href="mailto:miladfarazian@gmail.com">miladfarazian@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-phone social-icon"></i>
+            <a href="tel:+18184479511">+1 818 447 9511</a>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-map-marker-alt social-icon"></i>
+            <span>Los Angeles, CA, USA</span>
+        </div>
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://github.com/MiladFarazian" target="_blank">
+                <i class="fab fa-github social-icon"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/miladfarazian/" target="_blank">
+                <i class="fab fa-linkedin social-icon"></i>
+            </a>
+        </div>
+    </div>
+    
+  </section>  
+  
+  <div id="response-message" class="popup hidden">
+    <button onclick="closePopup()">X</button>
+  </div>
+
+  <footer>
+    <!-- Footer content will go here -->
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
