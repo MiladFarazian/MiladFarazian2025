@@ -247,37 +247,48 @@ let currentIndex = 0; // Track current project
 
 // Function to update the modal with a specific project index
 function updateModal(index) {
-    const card = projectCards[index];
-    if (!card) return;
+  const card = projectCards[index];
+  if (!card) return;
 
-    // Extract project details
-    const title = card.getAttribute('data-title');
-    const description = card.getAttribute('data-description');
-    const imageSrc = card.getAttribute('data-image');
-    const technologies = card.getAttribute('data-technologies') || "Not specified";
-    const projectLink = card.getAttribute('data-link');
+  // Extract project details
+  const title = card.getAttribute('data-title');
+  const description = card.getAttribute('data-description');
+  const imageSrc = card.getAttribute('data-image');
+  const technologies = card.getAttribute('data-technologies') || "Not specified";
+  const projectLink = card.getAttribute('data-link');
 
-    // Populate modal with project details
-    modalTitle.textContent = title;
-    modalProjectTitle.textContent = title;
-    modalDescription.textContent = description;
-    modalImage.src = imageSrc;
-    modalTechnologies.textContent = technologies;
+  // Populate modal with project details
+  modalTitle.textContent = title;
+  modalProjectTitle.textContent = title;
+  modalDescription.textContent = description;
+  modalImage.src = imageSrc;
+  modalTechnologies.textContent = technologies;
 
-    // Update the "Open Project" link
-    if (projectLink) {
-        modalOpen.href = projectLink;
-        modalOpen.style.display = "inline-flex"; // Show link
-    } else {
-        modalOpen.style.display = "none"; // Hide if no link
-    }
+  // Update the "Open Project" link
+  if (projectLink) {
+      modalOpen.href = projectLink;
+      modalOpen.style.display = "inline-flex";
+  } else {
+      modalOpen.style.display = "none";
+  }
 
-    // Update current index
-    currentIndex = index;
+  // Update current index
+  currentIndex = index;
 
-    // Disable/Enable navigation buttons
-    prevProjectBtn.style.visibility = currentIndex === 0 ? "hidden" : "visible";
-    nextProjectBtn.style.visibility = currentIndex === projectCards.length - 1 ? "hidden" : "visible";
+  // Update next project title (NEW CODE)
+  const nextProjectTitleContainer = document.getElementById("next-project-title");
+  if (currentIndex < projectCards.length - 1) {
+      const nextProjectTitle = projectCards[currentIndex + 1].getAttribute('data-title');
+      nextProjectTitleContainer.textContent = nextProjectTitle;
+      nextProjectTitleContainer.style.display = "block"; // Make sure it's visible
+  } else {
+      nextProjectTitleContainer.textContent = "";
+      nextProjectTitleContainer.style.display = "none"; // Hide if no next project
+  }
+
+  // Update navigation button visibility
+  prevProjectBtn.style.visibility = currentIndex === 0 ? "hidden" : "visible";
+  nextProjectBtn.style.visibility = currentIndex === projectCards.length - 1 ? "hidden" : "visible";
 }
 
 // Add event listeners to project cards to open modal

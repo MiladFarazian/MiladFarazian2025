@@ -168,7 +168,8 @@
                                     Charlie Floeder, Rizq Khateeb, Harshit Shah, Yash Sharma" 
                                     data-category="A.I./Machine Learning" 
                                     data-image="images/LMBiS.png" 
-                                    data-technologies="Python">
+                                    data-technologies="Python"
+                                    data-link="lmbis-net.html">
             <img src="images/LMBiS.png" alt="AI Project 2" />
             <div class="project-info">
               <h3>Implementation of Abbasi et al's LMBiS-Net</h3>
@@ -199,7 +200,7 @@
           </div>
           <div class="project-card" data-title="LLM Distillation for Financial Reports" 
                                     data-description="" 
-                                    data-category="A.I/Machine Learning" 
+                                    data-category="A.I./Machine Learning" 
                                     data-image="images/financial.png" 
                                     data-technologies="Python">
             <img src="images/financial.png" alt="AI Project 3" />
@@ -212,7 +213,8 @@
                                     data-description="Similar to a Spotify Wrapped, this Chrome Extension add-on scrapes data from your Canvas account and presents your stats for the semester. A good gauge to see how you are doing in your classes!" 
                                     data-category="Website Development" 
                                     data-image="images/canvas.png" 
-                                    data-technologies="Javascript, HTML, CSS">
+                                    data-technologies="Javascript, HTML, CSS"
+                                    data-link="https://devpost.com/software/canvas-year-in-review">
             <img src="images/canvas.png" alt="Web Project 2" />
             <div class="project-info">
               <h3>Canvas Year in Review</h3>
@@ -266,9 +268,13 @@
                         </a>  
                         <!-- Project Navigation -->
                         <div class="modal-navigation">
-                          <button id="prev-project" class="nav-button">←</button>
-                          <button id="next-project" class="nav-button">→</button>
-                        </div>
+                          <div class="nav-controls">
+                              <span class="nav-label">Next Project</span>
+                              <button id="prev-project" class="nav-button">←</button>
+                              <button id="next-project" class="nav-button">→</button>
+                          </div>
+                          <div id="next-project-title" class="next-project-title"></div>
+                        </div>                                          
                     </div>
                 </div>
             </div>        

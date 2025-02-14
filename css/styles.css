@@ -151,16 +151,8 @@ body:hover {
     width: 100%; /* Ensure it's contained */
 }
 
-/* Ensuring the logo remains the same size */
 .home-logo {
-    max-width: 600px; /* Ensure both images are the same width */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Prevent inline spacing issues */
-    margin: 0 auto; /* Center alignment */
-}
-
-.home-logo {
-    max-width: 600px; /* Ensure both images are the same width */
+    max-width: 50%; /* Ensure both images are the same width */
     height: auto; /* Maintain aspect ratio */
     display: block; /* Prevent inline spacing issues */
     transition: top 0.3s ease-in-out; /* Smooth movement */
@@ -857,19 +849,264 @@ body:hover {
     }
 }
 
+@media (max-width: 768px) {
+  /* Make the modal content take full width */
+  .modal-content-container {
+      width: 90%; /* More space inside modal */
+      padding: 15px;
+  }
+
+  /* Stack image and text vertically */
+  .modal-left-right {
+      flex-direction: column;
+      align-items: center; /* Center elements */
+      text-align: center;
+  }
+
+  /* Make sure image resizes properly */
+  .modal-image {
+      max-width: 90%; /* Allow image to shrink */
+      height: auto;
+  }
+
+  /* Adjust text alignment */
+  .modal-left, .modal-right {
+      text-align: center;
+      width: 100%;
+  }
+
+  /* Reduce title size for smaller screens */
+  .modal-title {
+      font-size: 2rem; /* Smaller, more readable */
+  }
+
+  /* Adjust technology section */
+  .modal-technologies {
+      font-size: 14px; /* Smaller text */
+  }
+
+  /* Adjust modal navigation */
+  .modal-navigation {
+      width: 100%;
+      justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ensure modal layout stacks elements */
+  .modal-content-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto; /* Allow scrolling */
+      padding-bottom: 60px; /* Space for the navigation */
+  }
+
+  /* Ensure modal takes up full screen height */
+  .modal {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+  }
+
+  /* Make sure modal-body allows scrolling */
+  .modal-body {
+      flex-grow: 1;
+      overflow-y: auto;
+      width: 100%;
+      padding-bottom: 80px; /* Extra space for navigation */
+  }
+
+  /* Fix modal-navigation at the bottom */
+  .modal-navigation {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px 15px;
+      border-radius: 20px 20px 0 0; /* Rounded corners at the top */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Add shadow for separation */
+  }
+
+  /* Navigation buttons layout */
+  .nav-controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+  }
+
+  /* Ensure the next project title is centered */
+  .next-project-title {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 5px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .nav-button {
+      font-size: 20px; /* Bigger buttons */
+      padding: 10px 15px; /* Easier to tap */
+  }
+
+  .modal-open, .modal-close {
+      font-size: 18px;
+      padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-navigation {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+  }
+
+  .nav-controls {
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+  }
+
+  .next-project-title {
+      font-size: 14px; /* Smaller, more readable */
+      text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-image {
+      max-width: 80%;
+      height: auto;
+      border-radius: 8px; /* Keep styling consistent */
+  }
+}
+
+
 /* Modal Navigation Container */
 .modal-navigation {
   position: absolute; /* Fix position within the modal */
-  bottom: 20px; /* Distance from the bottom */
-  right: 20px; /* Distance from the right */
+  bottom: 60px; /* Distance from the bottom */
+  right: 40px; /* Distance from the right */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  background: rgba(255, 255, 255, 0.1); /* Light transparent background */
+  background: rgba(255, 255, 255, 0.6); /* Light transparent background */
   padding: 10px 15px;
   border-radius: 20px; /* Rounded rectangle */
 }
+
+@media (max-width: 768px) {
+  /* Ensure modal content is scrollable on mobile */
+  .modal-body {
+      flex-grow: 1;
+      overflow-y: auto; /* Enables scrolling */
+      max-height: 80vh; /* Prevents modal from being too tall */
+      padding-bottom: 20px; /* Space for navigation */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Push navigation to the bottom */
+  }
+
+  /* Ensure modal-content takes full height */
+  .modal-content {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      max-height: 90vh; /* Prevents excessive height */
+      overflow: hidden; /* Keeps everything contained */
+      padding: 20px;
+  }
+
+  /* Ensure modal content container is structured properly */
+  .modal-content-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: left;
+      width: 100%;
+      flex-grow: 1; /* Allows proper expansion */
+  }
+
+  /* Navigation should be at the bottom of the modal-body on mobile */
+  .modal-navigation {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.6); /* Light transparent background */
+      position: relative;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 70px; /* Push it to the bottom */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+
+  /* Keep navigation buttons in one row */
+  .nav-controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+  }
+
+  /* Make buttons larger for better touch interaction */
+  .nav-button {
+      font-size: 20px;
+      padding: 12px;
+  }
+
+  /* Ensure "Next Project Title" wraps properly */
+  .next-project-title {
+      font-size: 14px;
+      text-align: center;
+      max-width: 100%;
+      white-space: normal;
+      word-wrap: break-word;
+  }
+
+    /* Style the breadcrumb navigation */
+  .breadcrumb {
+    text-align: left;
+    margin: 0px;
+  }
+
+  /* Ensure modal description is readable */
+  .modal-description {
+    text-align: left;
+  }
+
+  /* Style the project image */
+  .modal-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+  }
+
+  /* Technologies section */
+  .modal-details {
+    margin-top: 15px;
+    font-size: 1rem;
+  }
+}
+
 
 /* Navigation Buttons */
 .nav-button {
@@ -1296,6 +1533,129 @@ body:hover {
     margin: 0;
   }
   
-  
+  #prev-project{
+    padding: 10px;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out; /* Smooth movement */
+  }
+  #prev-project:hover{
+    transform: translateX(-3px);
+  }
+
+
+  #next-project{
+    padding: 10px;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out; /* Smooth movement */
+  }
+  #next-project:hover{
+    transform: translateX(3px);
+  }
+
+/* Ensure modal-navigation remains a box */
+/* Ensure modal-navigation remains a box */
+.modal-navigation {
+  display: flex;
+  flex-direction: column; /* Stack elements */
+  align-items: flex-start; /* Align everything to the left */
+  justify-content: center;
+  gap: 5px; /* Space between elements */
+  background: rgba(255, 255, 255, 0.6); /* Keep it inside the white transparent box */
+  padding: 10px 15px;
+  border-radius: 20px; /* Keep rounded corners */
+  width: fit-content; /* Adjust size based on content */
+  max-width: 200px; /* Prevent it from getting too wide */
+  height: 100px;
+  text-align: left;
+}
+
+/* Keep Next Project text and arrows in one row */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  white-space: nowrap; /* Ensures arrows and text stay in a row */
+}
+
+/* Navigation label (Next Project) should be aligned left */
+.nav-label {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+
+/* The Next Project Title */
+.next-project-title {
+  font-size: 16px;
+  font-weight: bolder;
+  color: white;
+  opacity: 1;
+  text-align: left;
+  align-self: flex-start;
+  max-width: 100%; /* Prevents overflow */
+  word-wrap: break-word; /* Allows long words to break */
+  overflow-wrap: break-word; /* Ensures wrapping happens */
+  white-space: normal; /* Allows multiple lines */
+}
+
+.lmbis-net-body{
+  margin: 40px;
+}
+
+.lmbis{
+  width: 70%;
+  height: auto;
+  display:block;
+  margin:auto
+}
+
+#lmbis-title{
+  font-size: xx-large;
+  text-align: left;
+  margin-left: 20px;
+}
+
+#lmbis-subtitle{
+  font-size: x-large;
+  padding-top: 5%;
+}
+
+#hero{
+  text-align: center;
+}
+
+.lmbis-left{
+  margin-right: 40%;
+}
+
+.lmbis-right{
+  margin-left: 50%;
+}
+
+#lmbis-html{
+  background-color: white;
+}
+
+#lmbis-html, #lmbis-html body, #lmbis-html h1, #lmbis-html h2, #lmbis-html h3, #lmbis-html p, #lmbis-html a {
+  color: #033e6e !important;
+}
+
+.lmbis-net-body img{
+  width: 60%
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .lmbis-left, .lmbis-right {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  .lmbis-net-body img {
+    width: 90%;
+  }
+}
+
+
   
   
