@@ -550,6 +550,23 @@ body:hover {
     margin: 0 auto; /* Center grid */
     grid-auto-flow: dense; /* Allow cards to fill empty spaces */
   }
+
+  @media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* Single-column layout */
+        gap: 20px; /* Keep spacing between cards */
+        padding: 0 15px; /* Add space inside the container instead of margins */
+    }
+
+    .project-card {
+        width: 100%; /* Ensure cards take full width within padding */
+    }
+
+    .project-info {
+        padding: 10px; /* Adjust inner spacing */
+        text-align: center; /* Keep text centered */
+    }
+}
   
   /* Project Card */
   .project-card {
