@@ -1199,6 +1199,72 @@ body:hover {
     text-align: right; /* Right-align the dates */
     white-space: nowrap; /* Prevent line breaks */
 }
+
+@media (max-width: 768px) {
+  .experience-item{
+    margin: 0px 20px;
+  }
+
+  .experience-header {
+      display: flex;
+      flex-direction: column; /* Stack title and date */
+      align-items: flex-start; /* Align text to the left */
+      text-align: left; /* Ensure text alignment */
+      padding: 15px; /* Adjust padding */
+  }
+
+  .experience-header h3 {
+      font-size: 16px; /* Reduce font size slightly */
+      white-space: normal; /* Allow text to wrap */
+      overflow: visible; /* Ensure full display */
+      text-overflow: unset; /* Prevent text cutting off */
+  }
+
+  .experience-header span {
+      font-size: 14px; /* Reduce date size */
+      margin-top: 5px; /* Add some spacing between title and date */
+      display: block; /* Ensure date is on a new line */
+  }
+
+  .toggle-button {
+      align-self: flex-end; /* Keep the toggle button aligned to the right */
+      margin-top: -25px; /* Prevent it from being pushed too far down */
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-details {
+      display: flex;
+      flex-direction: column; /* Stack content vertically */
+      align-items: flex-start; /* Align text properly */
+      padding: 15px; /* Adjust padding */
+  }
+
+  .meta-info {
+      flex-direction: column; /* Place location & link on separate lines */
+      align-items: flex-start; /* Align text left */
+      gap: 5px; /* Reduce spacing */
+  }
+
+  .details-logo {
+      order: -1; /* Moves the logo above the text */
+      display: flex;
+      justify-content: center;
+      width: 100%; /* Center logo */
+  }
+
+  .details-logo img {
+      max-width: 100px; /* Adjust logo size */
+      height: auto;
+  }
+
+  .details-content {
+      display: flex;
+      flex-direction: column; /* Stack content vertically */
+      align-items: flex-start; /* Align text to the left */
+      text-align: left; /* Ensure readability */
+  }
+}
   
   /* Toggle Button */
   .toggle-button {
@@ -1328,7 +1394,7 @@ body:hover {
   @media (max-width: 768px) {
     .creative-card {
         height: auto; /* Adjust height dynamically */
-        padding: 10px; /* Add some padding */
+        padding: 0px 10px; /* Add some padding */
     }
 
     .creative-card img {

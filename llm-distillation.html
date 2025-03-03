@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html id="lmbis-html" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LMBiS-Net Implementation">
+  <title>LLM Distillation for Financial Reports</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="images/faveicon_dark.png" type="image/png">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <a href="index.html"><img src="images/milad_navy.png" alt="Logo" /></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">// home</a></li>
+                    <li><a href="#problem">// problem</a></li>
+                    <li><a href="#importance">// importance</a></li>
+                    <li><a href="#methodology">// methodology</a></li>
+                    <li><a href="#discussion">// discussion</a></li>
+                    <li><a href="#contribution">// contribution</a></li>
+                    <li><a href="#results">// results</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <h1 id="lmbis-title">LLM Distillation for Financial Reports</h1>
+
+    <a class="modal-close" href="index.html#projects">
+        <span class="arrow">←</span> <span class="back">Back to Projects</span>
+    </a>
+
+    <div class="lmbis-net-body">
+        <section id="hero">
+            <div class="hero-container"> 
+                <img src="images/llm_mapping.png" alt="lmbis" class="lmbis" />
+                <h3 id="lmbis-subtitle">LLM Distillation for Financial Reports</h3>
+                <p>Harshit Shah, Sebastian Escalante, Milad Farazian, Rizq Khateeb</p>
+            </div>
+        </section>
+        
+        <section id="problem" class="lmbis-left">
+            <h2>Problem</h2>
+            <p>We used distillation to develop a financial analysis tool that is computationally efficient and simpler than traditional LLMs while also being specialized for financial contexts. LLMs cannot be efficiently used and hosted on an ad-hoc basis, which is why we aim to train smaller models that can be easily accessible.
+            </p>
+        </section>
+        
+        <section id="importance" class="lmbis-right">
+            <h2>Project Importance</h2>
+            <p>Financial analysis tools are essential for evaluating a company's financial stability and offering insights into its fiscal health. The current available tools require lots of computational power and resources, while being too general to remain consistently accurate for financial contexts. The development of a new model through distillation will be able to combine the strengths of multiple models while being more resource-efficient. By reducing the amount of computational resources used, our approach makes advanced financial analysis accessible. Furthermore, the enhanced accuracy tailored to financial contexts can improve decision-making across industries, driving better economic outcomes for individuals, businesses, and the economy as a whole.</p>
+        </section>
+        
+        <section id="methodology" class="lmbis-left">
+            <h2>Methodology</h2>
+            <p>The approach we define is depicted in Fig. 1. The general idea is to have a large unified dataset, perform preprocessing required and pass it along to big and renowned Large Language Models such as Claude 3.5 haiku and Meta’s Llama 3. As the goal is to train a smaller model on outputs and rationales of these models, we use the big models to generate "labels" and "rationales". Combining these rationales and labels, we aim to train a smaller Large Language Model (smaller in terms of number of parameters, for e.g. Flan-T5 or GPT-2)</p>
+            <img src="images/llm_mapping.png" alt="lmbis" class="lmbis" />
+        </section>
+        
+        <section id="discussion" class="lmbis-right">
+            <h2>Discussion</h2>
+            <p>LLaMA 3 and Claude 3.5 excel in similar areas, making distillation effective for combining their strengths. T5 distilled from LLaMA 3 outperforms FinGPT, indicating step-by-step distillation is more effective than fine-tuning or LoRAs, thus offering cost-efficient performance and suggesting that distillation is a promising strategy for optimization.</p>
+        </section>
+        
+        <section id="contribution" class="lmbis-left">
+            <h2>Project Contribution</h2>
+            <p>We provided a model that outperforms current LoRAs and Fine-tuned GPTs using less than 12% of the original dataset (Sentiment Train FinGPT) in the FPB benchmark. This not only takes less training time but the inference is dramatically sped up making this model available for use in resource-constrained systems.</p>
+        </section>
+        
+        <section id="results" class="lmbis-right">
+            <h2>Results</h2>
+            <div class="results-container">
+                <img src="images/llm_results.png" alt="Results Comparison" class="results-image" />
+                <p> <span styles="font-weight: bold;">Example</span>
+                    Input text: What is the sentiment of this news? Please choose an answer from {negative/neutral/positive}
+                    <span styles="font-weight: bold;">T5:</span>
+                    Bitcoin just crashed today, this is a disaastah!
+                    Predicted sentiment: negative
+                    Explanation: The sentiment is “negative” because the news mentions a loss of money, which is a disaastah (identified as a negative word).
+                    <span styles="font-weight: bold;">Llama3</span>
+                    Amazon is opening up another physical store, this time for consumers who want to buy clothes.
+                    Predicted sentiment: neutral
+                    Explanation:The news simply states a fact about Amazon opening a physical store, without expressing any opinion or emotion. 
+                </p>
+            </div>
+        </section>
+
+        <section id="colab">
+            <h2>Our Google Colab</h2>
+            <script src="https://gist.github.com/MiladFarazian/3745fa988c5a3ae0fd7a4da82b956e56.js"></script>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>For more details, feel free to reach out:</p>
+            <p>Email: <a href="mailto:miladfarazian@gmail.com">miladfarazian@gmail.com</a></p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024. Made with passion by Milad Farazian.</p>
+    </footer>
+</body>
+</html>

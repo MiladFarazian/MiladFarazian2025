@@ -52,44 +52,68 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-document.querySelectorAll('.experience-item').forEach(item => {
-    const header = item.querySelector('.experience-header');
-    const details = item.querySelector('.experience-details');
-    const button = item.querySelector('.toggle-button');
+document.addEventListener("DOMContentLoaded", function () {
+  const experienceHeaders = document.querySelectorAll(".experience-header");
 
-    header.addEventListener('click', () => {
-        const isExpanding = !details.classList.contains('active');
+  experienceHeaders.forEach(header => {
+      header.addEventListener("click", function () {
+          const currentlyOpen = document.querySelector(".experience-details.active");
+          const details = this.nextElementSibling; // Get corresponding details section
+          const button = this.querySelector(".toggle-button");
 
-        if (isExpanding) {
-            // Expand the details
-            details.style.display = 'block'; // Make it visible
-            const fullHeight = details.scrollHeight + 'px'; // Get the full height
-            details.style.maxHeight = '0'; // Reset height for transition
-            setTimeout(() => {
-                details.style.maxHeight = fullHeight; // Expand smoothly
-            }, 10); // Allow styles to apply before expanding
-            button.textContent = '-';
-        } else {
-            // Collapse the details
-            const currentHeight = details.scrollHeight + 'px'; // Current visible height
-            details.style.maxHeight = currentHeight; // Set current height for transition
-            setTimeout(() => {
-                details.style.maxHeight = '0'; // Collapse smoothly
-            }, 10); // Allow styles to apply before collapsing
-            button.textContent = '+';
-        }
+          // If clicking the already open section, close it
+          if (currentlyOpen === details) {
+              details.style.maxHeight = details.scrollHeight + "px"; // Reset to current height
+              requestAnimationFrame(() => {
+                  details.style.maxHeight = "0px"; // Collapse smoothly
+              });
 
-        // Toggle active class on details and header
-        details.classList.toggle('active');
-        header.classList.toggle('active');
-    });
+              details.classList.remove("active");
+              this.classList.remove("active");
+              button.textContent = "+";
 
-    details.addEventListener('transitionend', (event) => {
-        if (event.propertyName === 'max-height' && !details.classList.contains('active')) {
-            details.style.display = 'none'; // Hide completely after collapse
-        }
-    });
+              // Delay hiding the element slightly to let animation finish
+              setTimeout(() => {
+                  if (!details.classList.contains("active")) {
+                      details.style.display = "none";
+                  }
+              }, 400); // Delay should match CSS transition time
+
+              return;
+          }
+
+          // If another section is open, close it first
+          if (currentlyOpen && currentlyOpen !== details) {
+              currentlyOpen.style.maxHeight = currentlyOpen.scrollHeight + "px";
+              requestAnimationFrame(() => {
+                  currentlyOpen.style.maxHeight = "0px";
+              });
+
+              currentlyOpen.classList.remove("active");
+              currentlyOpen.previousElementSibling.classList.remove("active");
+              currentlyOpen.previousElementSibling.querySelector(".toggle-button").textContent = "+";
+
+              // Delay hiding to allow animation to fully finish
+              setTimeout(() => {
+                  if (!currentlyOpen.classList.contains("active")) {
+                      currentlyOpen.style.display = "none";
+                  }
+              }, 300);
+          }
+
+          // Open the clicked section smoothly
+          details.style.display = "block"; // Ensure it's visible before expanding
+          requestAnimationFrame(() => {
+              details.style.maxHeight = details.scrollHeight + "px"; // Expand smoothly
+          });
+
+          details.classList.add("active");
+          this.classList.add("active");
+          button.textContent = "-";
+      });
+  });
 });
+
 
 // Select all filter buttons and project cards
 const filterButtons = document.querySelectorAll('.filter-btn');
