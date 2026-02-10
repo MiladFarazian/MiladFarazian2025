@@ -376,10 +376,151 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         gif.src = "images/milad_home.png"; // Replace GIF with a still frame
         gif.style.top = "2px"; // Push the PNG down
-    }, 350); 
+    }, 350);
 });
 
+// ============================================
+// Scroll Reveal Animations using Intersection Observer
+// ============================================
 
+document.addEventListener("DOMContentLoaded", () => {
+    // Add reveal classes to elements
+    const expertiseCards = document.querySelectorAll('.expertise-card');
+    const projectCardsForReveal = document.querySelectorAll('.project-card');
+    const experienceItems = document.querySelectorAll('.experience-item');
+    const sectionTitles = document.querySelectorAll('#expertise h2, #projects h2, #experience h2, #contact h2, #creative h2');
+    const contactForm = document.querySelector('.contact-form');
+    const contactDetails = document.querySelector('.contact-details');
 
-  
-  
+    // Add reveal class to section titles
+    sectionTitles.forEach(title => title.classList.add('reveal'));
+
+    // Add stagger reveal to expertise cards
+    expertiseCards.forEach(card => card.classList.add('reveal-stagger'));
+
+    // Add stagger reveal to project cards
+    projectCardsForReveal.forEach(card => card.classList.add('reveal-stagger'));
+
+    // Add reveal to experience items
+    experienceItems.forEach((item, index) => {
+        item.classList.add(index % 2 === 0 ? 'reveal-left' : 'reveal-right');
+    });
+
+    // Add reveal to contact sections
+    if (contactForm) contactForm.classList.add('reveal-left');
+    if (contactDetails) contactDetails.classList.add('reveal-right');
+
+    // Create Intersection Observer
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all elements with reveal classes
+    document.querySelectorAll('.reveal, .reveal-stagger, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+        revealObserver.observe(el);
+    });
+});
+
+// ============================================
+// 3D Tilt Effect for Project Cards
+// ============================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    const tiltCards = document.querySelectorAll('.project-card');
+
+    tiltCards.forEach(card => {
+        card.classList.add('tilt-active');
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Calculate rotation (max 10 degrees)
+            const rotateX = ((y - centerY) / centerY) * -8;
+            const rotateY = ((x - centerX) / centerX) * 8;
+
+            // Apply transform
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Reset transform on mouse leave
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        });
+
+        // Add touch support for mobile
+        card.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                const rect = card.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            }
+        });
+
+        card.addEventListener('touchend', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        });
+    });
+
+    // Also apply tilt to expertise cards
+    const expertiseTiltCards = document.querySelectorAll('.expertise-card');
+
+    expertiseTiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        });
+    });
+});
+
+// ============================================
+// Smooth Parallax Effect for Home Section
+// ============================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    const homeSection = document.getElementById('home');
+    const homeOverlay = document.querySelector('.home-overlay');
+
+    if (homeSection && homeOverlay) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * 0.3;
+
+            if (scrolled < window.innerHeight) {
+                homeOverlay.style.transform = `translate(-50%, calc(-50% + ${rate}px))`;
+                homeOverlay.style.opacity = 1 - (scrolled / (window.innerHeight * 0.8));
+            }
+        });
+    }
+});
+

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal Portfolio">
-  <title>Milad Farazian</title>
+  <meta name="description" content="Milad Farazian - Creative Portfolio">
+  <title>Milad Farazian | Creative</title>
   <link rel="stylesheet" href="css/creativestyles.css">
   <link rel="icon" href="images/faveicon_creative.png" type="image/png">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -16,49 +16,178 @@
                 <div class="logo">
                   <a href="index.html"><img src="images/Milad_White.png" alt="Logo" /></a>
                 </div>
-                <!-- Hamburger Menu (Hidden on Desktop) -->
                 <div class="menu-toggle" id="menu-toggle">
                     <span class="hamburger"></span>
                 </div>
                 <ul class="nav-links">
-                    <li data-index="01"><a href="#creative">// home of the creative</a></li>
+                    <li data-index="01"><a href="#music">// music</a></li>
                     <li data-index="02"><a href="#film">// film</a></li>
-                    <li data-index="03"><a href="#music">// music</a></li>
-                    <li data-index="04"><a href="#art">// art</a></li>
                 </ul>
 
-                <!-- Dropdown Menu (Hidden by Default) -->
                 <div class="dropdown-menu hidden" id="dropdown-menu">
                     <button class="close-btn" id="close-menu">&times;</button>
                     <ul>
-                    <li><a href="#creative">// home of the creative</a></li>
-                    <li><a href="#film">// film</a></li>
                     <li><a href="#music">// music</a></li>
-                    <li><a href="#art">// art</a></li>
+                    <li><a href="#film">// film</a></li>
                     </ul>
                     <div class="dropdown-footer">
-                        <p>© 2024. Made with passion by Milad Farazian.</p>
-                        <p>All rights reserved.</p>
+                        <p>&copy; 2025. Made with passion by Milad Farazian.</p>
                     </div>
                 </div>
             </div>
         </nav>
-          
-      </header>
-    </div>
-    
-  </section>  
+    </header>
 
-  <section id="home">
-    <div class="home-overlay">
-        <img src="images/coming_soon.png" alt="Logo" class="home-logo">
-    </div>
-  </section>
+    <!-- Music Section -->
+    <section id="music">
+        <div class="section-header">
+            <h2><i class="fab fa-spotify"></i> Music</h2>
+            <p class="section-subtitle">Original tracks & productions</p>
+        </div>
 
-  <footer>
-    <!-- Footer content will go here -->
-  </footer>
+        <!-- Vinyl Grid - Dynamically loaded from Spotify -->
+        <div class="vinyl-grid" id="vinyl-grid">
+            <!-- Tracks will be loaded dynamically -->
+        </div>
 
-  <script src="js/scripts.js"></script>
+        <div class="loading-spinner" id="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i> Loading discography...
+        </div>
+
+        <!-- Spotify Player (Hidden until track selected) -->
+        <div class="spotify-player-container">
+            <iframe
+                id="spotify-player"
+                style="border-radius:12px"
+                src="https://open.spotify.com/embed/track/0iSrcDcY882UgJSmGnRApi?utm_source=generator&theme=0"
+                width="100%"
+                height="152"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <a href="https://open.spotify.com/artist/5sIJlYqfHM3gpYwYU17HOB" target="_blank" class="spotify-link">
+            <i class="fab fa-spotify"></i> View Full Artist Profile
+        </a>
+
+        <!-- Audio Visualizer -->
+        <div class="audio-visualizer">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </section>
+
+    <!-- Film Section -->
+    <section id="film">
+        <div class="film-grain"></div>
+        <div class="section-header">
+            <h2><i class="fas fa-film"></i> Film</h2>
+            <p class="section-subtitle">Production & Design</p>
+        </div>
+
+        <div class="filmography">
+            <!-- Film Card 1 - Usurper -->
+            <div class="film-card">
+                <div class="film-poster">
+                    <img src="images/usurper.png" alt="Usurper Poster" class="poster-image">
+                    <div class="film-overlay">
+                        <a href="https://www.imdb.com/title/tt32159991/" target="_blank" class="film-rating">
+                            <i class="fab fa-imdb"></i> IMDb
+                        </a>
+                    </div>
+                </div>
+                <div class="film-details">
+                    <h3 class="film-title">Usurper</h3>
+                    <div class="film-meta">
+                        <span class="film-year">2025</span>
+                        <span class="film-genre">Short / Thriller</span>
+                    </div>
+                    <div class="film-roles">
+                        <span class="role-tag pa">Production Assistant</span>
+                    </div>
+                    <p class="film-description">
+                        Consumed by addiction and anxiety, a withdrawn Abel faces an unsettling truth when his friend Seth intervenes. Directed by Edward Avalos.
+                    </p>
+                </div>
+                <div class="film-clapboard">
+                    <div class="clapboard-stripes"></div>
+                </div>
+            </div>
+
+            <!-- Film Card 2 - Showerhead -->
+            <div class="film-card">
+                <div class="film-poster">
+                    <img src="images/showerhead.png" alt="Showerhead Poster" class="poster-image">
+                    <div class="film-overlay">
+                        <a href="https://www.imdb.com/title/tt35524195/" target="_blank" class="film-rating">
+                            <i class="fab fa-imdb"></i> IMDb
+                        </a>
+                    </div>
+                </div>
+                <div class="film-details">
+                    <h3 class="film-title">Showerhead</h3>
+                    <div class="film-meta">
+                        <span class="film-year">2024</span>
+                        <span class="film-genre">Short Film</span>
+                    </div>
+                    <div class="film-roles">
+                        <span class="role-tag actor">Actor</span>
+                    </div>
+                    <p class="film-description">
+                        An experimental short film exploring unconventional narrative techniques.
+                    </p>
+                </div>
+                <div class="film-clapboard">
+                    <div class="clapboard-stripes"></div>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://www.imdb.com/name/nm16942921/" target="_blank" class="imdb-link">
+            <i class="fab fa-imdb"></i> View Full Filmography on IMDb
+        </a>
+
+        <!-- Film Strip Decoration -->
+        <div class="film-strip">
+            <div class="film-frame"></div>
+            <div class="film-frame"></div>
+            <div class="film-frame"></div>
+            <div class="film-frame"></div>
+            <div class="film-frame"></div>
+            <div class="film-frame"></div>
+            <div class="film-frame"></div>
+            <div class="film-frame"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Milad Farazian. All creative works reserved.</p>
+            <div class="footer-links">
+                <a href="index.html">Back to Portfolio</a>
+                <a href="https://open.spotify.com/artist/5sIJlYqfHM3gpYwYU17HOB" target="_blank">Spotify</a>
+                <a href="https://www.imdb.com/name/nm16942921/" target="_blank">IMDb</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/creative.js"></script>
 </body>
 </html>
