@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Katsuya's Revenge - A 2D Platformer Game">
+    <title>Katsuya's Revenge | Milad Farazian</title>
+    <link rel="icon" href="images/faveicon.png" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Define the Alike font */
+        @font-face {
+            font-family: 'Alike';
+            src: url('css/fonts/Alike.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #011f38 0%, #012a4a 50%, #011f38 100%);
+            min-height: 100vh;
+            font-family: 'Alike', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 30px;
+            background: rgba(1, 31, 56, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(79, 147, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(79, 147, 255, 0.15);
+            border: 1px solid rgba(79, 147, 255, 0.4);
+            color: #4f93ff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(79, 147, 255, 0.25);
+            border-color: rgba(79, 147, 255, 0.6);
+            transform: translateX(-5px);
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Game Info Section */
+        .game-info {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .game-title {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #4f93ff 0%, #7eb3ff 50%, #4f93ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(79, 147, 255, 0.3);
+            margin-bottom: 15px;
+            letter-spacing: 0.1em;
+        }
+
+        .game-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .game-credits {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 10px;
+        }
+
+        .game-tech {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(79, 147, 255, 0.15);
+            border: 1px solid rgba(79, 147, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #4f93ff;
+        }
+
+        /* Game Container */
+        .game-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 1600px;
+            aspect-ratio: 2 / 1;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow:
+                0 0 0 2px rgba(79, 147, 255, 0.3),
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 100px rgba(79, 147, 255, 0.1);
+        }
+
+        .game-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Controls Info */
+        .controls-section {
+            padding: 30px 20px 50px;
+            text-align: center;
+        }
+
+        .controls-title {
+            font-size: 1.5rem;
+            color: #4f93ff;
+            margin-bottom: 20px;
+        }
+
+        .controls-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(0, 48, 90, 0.5);
+            border: 1px solid rgba(79, 147, 255, 0.2);
+            border-radius: 8px;
+        }
+
+        .control-key {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 36px;
+            padding: 0 12px;
+            background: rgba(79, 147, 255, 0.2);
+            border: 1px solid rgba(79, 147, 255, 0.4);
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #4f93ff;
+        }
+
+        .control-action {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(79, 147, 255, 0.1);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #4f93ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: 2rem;
+            }
+
+            .game-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .game-container {
+                border-radius: 8px;
+            }
+
+            .controls-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header {
+                padding: 10px 15px;
+            }
+
+            .logo img {
+                height: 30px;
+            }
+
+            .back-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Fullscreen notice */
+        .fullscreen-notice {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            background: rgba(79, 147, 255, 0.9);
+            color: #fff;
+            border-radius: 8px;
+            font-weight: 500;
+            z-index: 100;
+        }
+
+        @media (max-width: 1024px) {
+            .fullscreen-notice {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/Milad_White.png" alt="Logo"></a>
+        </div>
+        <a href="index.html#projects" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+    </header>
+
+    <main>
+        <section class="game-info">
+            <h1 class="game-title">KATSUYA'S REVENGE</h1>
+            <p class="game-subtitle">
+                Katsuya, a banished Samurai, dawns a hidden persona as a ninja to avenge the death of his sensei
+                by the corrupted Samurai Kapudo. A 2D Platformer adventure through feudal Japan.
+            </p>
+            <p class="game-credits">
+                Created by Kobe Shavolian, Milad Farazian, Brittany Dakoske, Keon Etebari, Shelby Cohen,
+                Keegan Sly & Mr. Enfield in AP Computer Science. Restored and presented by Milad Farazian.
+            </p>
+            <span class="game-tech">
+                <i class="fab fa-java"></i> Originally Java | Web Port
+            </span>
+        </section>
+
+        <div class="game-wrapper">
+            <div class="game-container">
+                <iframe src="web/index.html" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <section class="controls-section">
+            <h2 class="controls-title"><i class="fas fa-gamepad"></i> Controls</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <span class="control-key">A / D</span>
+                    <span class="control-action">Move Left / Right</span>
+                </div>
+                <div class="control-item">
+                    <span class="control-key">W</span>
+                    <span class="control-action">Jump</span>
+                </div>
+                <div class="control-item">
+                    <span class="control-key">SPACE</span>
+                    <span class="control-action">Attack</span>
+                </div>
+                <div class="control-item">
+                    <span class="control-key">CLICK</span>
+                    <span class="control-action">Throw Shuriken</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Milad Farazian. <a href="index.html">Back to Portfolio</a></p>
+    </footer>
+
+    <div class="fullscreen-notice">
+        <i class="fas fa-expand"></i> For best experience, play on desktop
+    </div>
+</body>
+</html>
