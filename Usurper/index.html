@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usurper</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fog layers -->
+    <div class="fog-container">
+        <div class="fog fog-1"></div>
+        <div class="fog fog-2"></div>
+        <div class="fog fog-3"></div>
+    </div>
+
+    <div class="logo">
+        <a href="../"><img src="../images/Milad_White.png" alt="Logo" /></a>
+    </div>
+
+    <div>
+        <div class="header">
+            <h2>Matthew Frietze</h2>
+            <h1 class="film-title">USURPER</h1>
+            <h3 class="subtitle">A film by Edward Avalos</h3>
+            <div class="scroll-indicator" onclick="document.querySelector('.description').scrollIntoView({behavior:'smooth'})">
+                <span>film below</span>
+                <div class="chevron">&#x2304;</div>
+            </div>
+        </div>
+        <div class="description">
+            <div class="text-section reveal">
+                <p>
+                    Starring Matthew Frietze, USURPER stalks a withdrawn Abel, who becomes consumed by addiction and anxiety. He begins to struggle to face an unsettling truth when his friend Seth intervenes.
+                </p>
+            </div>
+            <div class="video-section reveal">
+                <!--video controls>
+                    <source src="path-to-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video-->
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/1070369663?h=8ded26e100" width="1040" height="600" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2025 Usurper Film. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Scroll-triggered reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        reveals.forEach(el => observer.observe(el));
+
+        // Mouse-tracking parallax on title
+        const title = document.querySelector('.film-title');
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 10;
+            const y = (e.clientY / window.innerHeight - 0.5) * 6;
+            title.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body>
+</html>

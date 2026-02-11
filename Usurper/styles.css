@@ -1,0 +1,311 @@
+/* ===== Base ===== */
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background-image: url("images/scream.png");
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    overscroll-behavior: contain;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== Vignette Overlay ===== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.75) 100%);
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* ===== Film Grain Overlay ===== */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 101;
+    animation: grain 0.5s steps(4) infinite;
+}
+
+@keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-2px, -2px); }
+}
+
+/* ===== Logo ===== */
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+}
+
+.logo img {
+    width: 90px;
+    height: auto;
+}
+
+/* ===== Header ===== */
+.header {
+    position: relative;
+    text-align: left;
+    top: 4rem;
+    left: 0;
+    bottom: 4rem;
+    width: 100%;
+    padding: 1.5rem 4rem 8rem 8rem;
+    z-index: 10;
+    background: none;
+}
+
+.header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 9rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: white;
+}
+
+.header h3.subtitle {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    padding-top: 10rem;
+    font-style: italic;
+    animation: flicker 4s infinite;
+}
+
+.header p.film-note {
+    margin-top: 14rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* ===== Glitch Title ===== */
+.film-title {
+    font-size: 7rem;
+    position: relative;
+    left: -12px;
+    display: inline-block;
+    animation: glitch-settle 6s infinite;
+    transition: transform 0.1s ease-out;
+}
+
+.film-title::before,
+.film-title::after {
+    content: "USURPER";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.film-title::before {
+    color: #ff0040;
+    animation: glitch-before 6s infinite;
+}
+
+.film-title::after {
+    color: #00fff9;
+    animation: glitch-after 6s infinite;
+}
+
+@keyframes glitch-settle {
+    0%, 88%, 100% { transform: translate(0); }
+    89% { transform: translate(-2px, 1px); }
+    90% { transform: translate(2px, -1px); }
+    91% { transform: translate(-1px, -1px); }
+    92% { transform: translate(0); }
+}
+
+@keyframes glitch-before {
+    0%, 88%, 93%, 100% { opacity: 0; clip-path: inset(0 0 0 0); }
+    89% { opacity: 0.8; clip-path: inset(20% 0 60% 0); transform: translate(-4px, 0); }
+    90% { opacity: 0.8; clip-path: inset(50% 0 20% 0); transform: translate(4px, 0); }
+    91% { opacity: 0.8; clip-path: inset(10% 0 70% 0); transform: translate(-2px, 0); }
+    92% { opacity: 0.6; clip-path: inset(80% 0 5% 0); transform: translate(3px, 0); }
+}
+
+@keyframes glitch-after {
+    0%, 88%, 93%, 100% { opacity: 0; clip-path: inset(0 0 0 0); }
+    89% { opacity: 0.8; clip-path: inset(60% 0 10% 0); transform: translate(4px, 0); }
+    90% { opacity: 0.8; clip-path: inset(30% 0 40% 0); transform: translate(-3px, 0); }
+    91% { opacity: 0.8; clip-path: inset(70% 0 10% 0); transform: translate(2px, 0); }
+    92% { opacity: 0.6; clip-path: inset(5% 0 80% 0); transform: translate(-4px, 0); }
+}
+
+/* ===== Flicker Animation ===== */
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    41% { opacity: 1; }
+    42% { opacity: 0.6; }
+    43% { opacity: 1; }
+    44% { opacity: 0.4; }
+    45% { opacity: 1; }
+    76% { opacity: 1; }
+    77% { opacity: 0.7; }
+    78% { opacity: 1; }
+}
+
+/* ===== Scroll Indicator ===== */
+.scroll-indicator {
+    margin-top: 14rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    animation: pulse-down 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.scroll-indicator span {
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: lowercase;
+}
+
+.scroll-indicator .chevron {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+@keyframes pulse-down {
+    0%, 100% { opacity: 0.6; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(6px); }
+}
+
+/* ===== Fog Layers ===== */
+.fog-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.fog {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.015) 20%,
+        rgba(255, 255, 255, 0.03) 50%,
+        rgba(255, 255, 255, 0.015) 80%,
+        transparent 100%
+    );
+    top: 0;
+}
+
+.fog-1 {
+    animation: drift 25s linear infinite;
+    opacity: 0.7;
+}
+
+.fog-2 {
+    animation: drift 35s linear infinite reverse;
+    opacity: 0.5;
+    top: 30%;
+}
+
+.fog-3 {
+    animation: drift 20s linear infinite;
+    animation-delay: -10s;
+    opacity: 0.4;
+    top: 60%;
+}
+
+@keyframes drift {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+}
+
+/* ===== Scroll Reveal ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Content Sections ===== */
+main {
+    position: absolute;
+    margin-top: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-section {
+    max-width: 80%;
+    margin: 2rem auto;
+}
+
+.video-section iframe {
+    transition: box-shadow 0.4s ease;
+}
+
+.video-section:hover iframe {
+    box-shadow: 0 0 30px rgba(180, 0, 0, 0.5), 0 0 60px rgba(100, 0, 0, 0.3);
+}
+
+.video-section video {
+    width: 100%;
+    height: auto;
+    border: 2px solid #fff;
+}
+
+.text-section {
+    margin: 2rem auto;
+    max-width: 80%;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* ===== Footer ===== */
+footer {
+    margin-top: 3rem;
+    padding: 1rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* ===== Links ===== */
+a {
+    color: #00f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
