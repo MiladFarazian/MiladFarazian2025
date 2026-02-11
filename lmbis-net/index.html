@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="LMBiS-Net Implementation">
   <title>LMBiS-Net Implementation</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="icon" href="images/faveicon_dark.png" type="image/png">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="../images/faveicon_dark.png" type="image/png">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="navbar-container">
                 <div class="logo">
-                    <a href="index.html"><img src="images/milad_navy.png" alt="Logo" /></a>
+                    <a href="../"><img src="../images/milad_navy.png" alt="Logo" /></a>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#">// home</a></li>
@@ -28,14 +28,14 @@
 
     <h1 id="lmbis-title">Implementation of LMBiS-Net</h1>
 
-    <a class="modal-close" href="index.html#projects">
+    <a class="modal-close" href="../#projects">
         <span class="arrow">←</span> <span class="back">Back to Projects</span>
     </a>
 
     <div class="lmbis-net-body">
         <section id="hero">
             <div class="hero-container"> 
-                <img src="images/LMBiS.png" alt="lmbis" class="lmbis" />
+                <img src="../images/LMBiS.png" alt="lmbis" class="lmbis" />
                 <h3 id="lmbis-subtitle">Implementation of Abbasi et al’s Paper: “LMBiS-Net: A Lightweight Multipath ​Bidirectional Skip Connection based CNN for Retinal Blood Vessel Segmentation”</h3>
                 <p>Milad Farazian, Charlie Floeder, Rizq Khateeb, Harshit Shah, Yash Sharma</p>
                 <a href="https://arxiv.org/pdf/2309.04968" target="_blank">Original Paper</a>
@@ -56,13 +56,13 @@
         <section id="lmbis" class="lmbis-left">
             <h2>LMBiS-Net Model</h2>
             <p>LMBiS-Net is a CNN consisting of three encoder blocks, a bottleneck layer, and three decoder blocks. The network uses multipath feature extraction blocks and incorporates bidirectional skip connections to enhance information flow between the encoders and decoders.</p>
-            <img src="images/LMBiS.png" alt="lmbis" class="lmbis" />
+            <img src="../images/LMBiS.png" alt="lmbis" class="lmbis" />
         </section>
         
         <section id="features" class="lmbis-right">
             <h2>Multi-Path Feature Extraction Block</h2>
             <p>This component introduces feature diversity into the model, reducing overfitting and improving generalization. By using different-sized convolutions, the network captures both low-level and high-level features crucial for blood vessel segmentation.</p>
-            <img src="images/multipath.png" alt="Multipath-Feature Extraction Block" class="multipath" />
+            <img src="../images/multipath.png" alt="Multipath-Feature Extraction Block" class="multipath" />
         </section>
         
         <section id="contribution" class="lmbis-left">
@@ -73,9 +73,9 @@
         <section id="results" class="lmbis-right">
             <h2>Results</h2>
             <div class="results-container">
-                <img src="images/results_comparison.png" alt="Results Comparison" class="results-image" />
+                <img src="../images/results_comparison.png" alt="Results Comparison" class="results-image" />
                 <p>Comparison of AUC, Sensitivity, and Specificity between our implementation and the original paper.</p>
-                <img src="images/predictions.png" alt="Model Predictions" class="results-image" />
+                <img src="../images/predictions.png" alt="Model Predictions" class="results-image" />
                 <p>Sample input, model predictions, and ground truth retinal blood vessel segmentation.</p>
             </div>
         </section>
