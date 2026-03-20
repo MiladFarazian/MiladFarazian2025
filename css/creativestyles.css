@@ -924,7 +924,17 @@ footer {
 
     .film-card {
         width: 100%;
-        max-width: 320px;
+        max-width: 360px;
+    }
+
+    /* Always show IMDb button on touch devices (no hover) */
+    .film-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
+    }
+
+    .film-poster {
+        height: 220px;
     }
 
     .film-strip {
